@@ -10,6 +10,10 @@ Student.prototype.goToProm = function() {
   console.log("Eh.. go to prom?")
 }
 
-const jay = new Student('Jay', '5th')
+// reccomended way
+const jay = Object.create(Student.prototype);
 
-jay.goToProm()
+jay.name = 'Jay';
+jay.grade = '12th';
+
+console.log(jay.name);
