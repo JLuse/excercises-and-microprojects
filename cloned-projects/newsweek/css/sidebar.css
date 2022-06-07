@@ -1,0 +1,14 @@
+@media all and (max-width: 986px) {
+  .side-bar-header {
+    text-align: center;
+  }
+}
+
+li {
+  list-style-position: inside;
+  list-style-type: square;
+}
+
+#list-btn {
+  list-style-type: none;
+}
