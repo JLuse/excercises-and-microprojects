@@ -12,3 +12,63 @@ li {
 #list-btn {
   list-style-type: none;
 }
+
+.see-all-btn {
+  background-color: #e5e5e5;
+  color: #757575;
+  font-size: 16px;
+  line-height: 50px;
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.see-all-btn:hover {
+  opacity: 0.6;
+}
+
+.side-bar-header {
+  font: 19px;
+  letter-spacing: 0.25px;
+  color: #FF0500;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+@media only screen and (min-width: 1200px){
+  .side-bar-header {
+    font-size: 21px;
+  }
+}
+
+.list-container {
+  padding: 30px 20px;
+}
+
+.bullet {
+  position: relative;
+  padding: 15px 15px 15px 15px;
+  top: 15px;
+  left: -25px;
+  color: #FF0500;
+}
+
+.bullet a {
+  font-weight: bold;
+  font-size: 18px;
+  color: #181818;
+}
+
+.list-container li {
+  border-top: 1px solid #e5e5e5;
+}
+
+.list-container li:first-child {
+  border-top: 0;
+}
+
+.list-container li:last-child {
+  list-style-type: none; 
+  border-top: 0;
+}
