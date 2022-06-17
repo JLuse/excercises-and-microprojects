@@ -1,0 +1,22 @@
+@media (min-width: 1200px) {
+  #navbarMenu {
+    display: none !important;
+  }
+}
+
+#xlNavbar .navbar-brand, #navbarMenuToggler, #xlNavbar .nav-link {
+  line-height: 80px;
+}
+
+#xlNavbar .nav-link {
+  font-size: 14px;
+}
+
+#navbarMenuToggler, #navbarMenu .nav-link {
+  color: #333;
+}
+
+#navbarMenu .nav-link {
+  padding: 12px 0;
+  font-weight: 300;
+}
