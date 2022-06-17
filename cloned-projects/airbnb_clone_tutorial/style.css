@@ -30,3 +30,74 @@
 #hero h2 {
   padding-top: 168px;
 }
+
+#navbarMenu {
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-top: 88px;
+}
+
+#navbarMenuToggler {
+  color: rgb(255, 90, 95);
+  transition: color 0.25s;
+  z-index: 1;
+}
+
+#navbarMenuToggler.collapsed {
+  color: #fff;
+}
+
+.container-fluid, .container {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+#searchForm .form-control {
+  font-size: 15px;
+  font-weight: 300;
+  border-radius: 0;
+}
+
+#searchForm .btn-danger {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background: #FF5A5F;
+  border-color: #FF5A5F;
+}
+
+@media (min-width: 1200px) {
+  #hero {
+    height: 100vh;
+    min-height: 650px;
+  }
+
+  #searchForm {
+    position: absolute;
+    top: 120px;
+    width: 100%;
+  }
+
+  #searchForm .container-fluid {
+    max-width: 1080px;
+  }
+
+  #searchForm form {
+    padding: 32px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+    max-width: 441px;
+  }
+
+  #xlNavbar .nav-link div:hover {
+    border-bottom: 2px solid #fff;
+  }
+}
+
+#message {
+  bottom: 0;
+  right: 0;
+}
+
+#navbar {
+  z-index: 1;
+}
