@@ -20,3 +20,13 @@
   padding: 12px 0;
   font-weight: 300;
 }
+
+#hero {
+  background-image: url(./images/luca-bravo-zAjdgNXsMeg-unsplash.jpg);
+  background-size: cover;
+  background-position: center bottom;
+}
+
+#hero h2 {
+  padding-top: 168px;
+}
