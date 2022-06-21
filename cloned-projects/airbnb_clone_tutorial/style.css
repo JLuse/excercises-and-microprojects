@@ -230,3 +230,26 @@
   padding-top: 12px;
   padding-bottom: 12px;
 }
+
+/* ----------- Footer ----------- */
+
+.footerNav h5, .footerNav a {
+  font-size: 14px;
+}
+
+.footerNav h5 {
+  line-height: 18px;
+}
+
+.footerNav .social {
+  font-size: 18px;
+  height: 18px;
+}
+
+.footerBar small {
+  font-size: 14px;
+}
+
+.footerBar .select .angle {
+  transform: rotate(90deg);
+}
