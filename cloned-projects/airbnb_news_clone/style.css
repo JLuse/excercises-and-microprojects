@@ -1,0 +1,63 @@
+#navContainer {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.header {
+  position: relative;
+  height: 80px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  z-index: 2;
+}
+
+.navbar {
+  height: 100%;
+}
+
+.lang-picker {
+  position: relative;
+  display: inline-block;
+}
+
+.lang-dropdown {
+  font-size: 16px;
+  line-height: 1.375;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 260px;
+  max-height: calc(100vh - 32px);
+  margin: 0;
+  padding: 16px 24px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 6px 20px rgb(0 0 0 / 20%);
+  box-shadow: 0 6px 20pxrgba(0,0,0,.2);
+  border: 1pxsolidrgba(0,0,0,.04);
+  border-radius: 16px;
+  list-style: none;
+  text-align: left;
+  z-index: 90;
+  overflow-y: auto;
+}
+
+/* Links inside the dropdown */
+.lang-item > a {
+  color: black;
+  padding: 12px 16px;
+  display: block;
+}
+
+.lang-indent {
+  margin-left: 24px;
+}
+
+/* Change color of dropdown links on hover */
+.lang-dropdown a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.lang-picker:hover .lang-dropdown {display: block;}
