@@ -13,6 +13,47 @@
 
 .navbar {
   height: 100%;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.logo {
+  height: 32px;
+  width: 30px;
+  float: left;
+  margin-top: 8px;
+  margin-right: 6px;
+  background-image: url(./images/airbnb_logo.svg);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.navbar-brand {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  float: left;
+  display: block;
+  margin-top: 12px;
+  padding: 12px 0;
+  color: #222;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.33333;
+  letter-spacing: -.53px;
+  text-decoration: none;
+}
+
+.logo > span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
 }
 
 .lang-picker {
@@ -57,7 +98,11 @@
 }
 
 /* Change color of dropdown links on hover */
-.lang-dropdown a:hover {background-color: #ddd;}
+.lang-dropdown a:hover {
+  border-radius: 16px; 
+  background-color: #ddd;
+
+}
 
 /* Show the dropdown menu on hover */
 .lang-picker:hover .lang-dropdown {display: block;}
