@@ -1,3 +1,15 @@
+body {
+  font-family: Cereal, sans-serif;
+}
+
+a {
+  color: #222222;
+}
+
+a:hover {
+  color: #222222;
+}
+
 #navContainer {
   padding-left: 0;
   padding-right: 0;
@@ -15,6 +27,38 @@
   height: 100%;
   padding-left: 40px;
   padding-right: 40px;
+  align-items: center;
+}
+
+.navbar-nav {
+  align-items: center;
+}
+
+.navbar-list {
+  font-size: 14px;
+}
+
+.nav-link {
+  color: #222222;
+  font-weight: 500;
+}
+
+.nav-item {
+  color: inherit;
+}
+
+.nav-item > a:hover {
+  background-color: #F2F2F2;
+  border-radius: 8px;
+}
+
+.arrow {
+  margin-left: 5px;
+}
+
+#collapsedNav {
+ background-color: white;
+ align-items: baseline;
 }
 
 .logo {
@@ -27,6 +71,17 @@
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.brand-container {
+  padding-bottom: 8px;
+}
+
+/* not working as expected */
+@media (max-width: 770px) {
+  .brand-container {
+    padding-bottom: 10px;
+  }
 }
 
 .navbar-brand {
@@ -86,6 +141,10 @@
   overflow-y: auto;
 }
 
+.lang-picker-collapsed {
+  width: 100%;
+}
+
 /* Links inside the dropdown */
 .lang-item > a {
   color: black;
@@ -100,9 +159,386 @@
 /* Change color of dropdown links on hover */
 .lang-dropdown a:hover {
   border-radius: 16px; 
-  background-color: #ddd;
+  background-color: #F2F2F2;
+}
 
+.lang-dropdown-collapsed {
+  width: 100%;
+}
+
+.collapse-globe {
+  margin-right: 15px;
+  margin-left: -33px;
 }
 
 /* Show the dropdown menu on hover */
 .lang-picker:hover .lang-dropdown {display: block;}
+
+.collapsed-btn {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  min-width: 52px;
+  height: 46px;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 24px;
+  background-color: transparent;
+  background-position: 50%;
+  border: 0;
+  cursor: pointer;
+}
+/* Need to updaet the naming, this is the entire collapse */
+.navy {
+  left: 0px;
+  top: 80px;
+  /* transition: all 1s ease; */
+  right: 100%;
+  padding: 0 24px 24px 24px;
+  background-color: white;
+  height: 100%;
+}
+
+.filler {
+  background-color: white;
+  height: 100vh;
+}
+
+.search-form {
+  background-color: transparent;
+  border: 1px solid #d0d0d0;
+  height: 48px;
+  border-radius: 2px;
+  color: #222;
+  font-size: 16px;
+  line-height: 1.375;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  padding-left: 52px;
+}
+
+.lang-collapsed {
+  margin-top: 16px;
+  background-color: transparent;
+  border: 1px solid #d0d0d0;
+  height: 48px;
+  border-radius: 2px;
+  color: #222;
+  width: 100%;
+  margin-top: 16px;
+  padding: 0 48px 0 52px;
+  text-align: left;
+}
+
+.collapse-item {
+  margin-top: 32px;
+}
+
+.main-container {
+  padding-right: 40px;
+  padding-left: 40px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Hero */
+#hero {
+  align-items: center;
+  margin-top: 50px;
+}
+
+.hero-container {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-picture {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.hero-date {
+  color:grey;
+  font-size:0.9em;
+}
+
+.btn-lg {
+  border:none;
+  width:50%;
+  background-image: radial-gradient(circle at center center,#ff385c 0,#e61e4d 27.5%,#e31c5f 40%,#d70466 57.5%,#bd1e59 75%,#bd1e59 100%);
+}
+
+.promo-text h3 {
+  font-size:1.5em;
+}
+
+.promo-text {
+  padding-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  #hero {
+    margin-top:75px;
+  }
+  .hero-text{
+    padding-right: 100px;
+  }
+}
+
+/* Newsletter */
+#latest-news {
+  padding-top: 70px;
+}
+
+.latest-news-image {
+  border-radius: 5px;
+}
+
+.latest-news-headline {
+  padding: 3px;
+}
+
+.image-latest-contain {
+  margin-bottom: 10px;
+}
+
+.news-time {
+  font-size: small;
+  font-weight: 300;
+  color: grey;
+  margin-top: 5px;
+}
+
+.news-link {
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.social-box {
+  border-left: solid #D3D3D3;
+  padding-left: 2em;
+}
+
+.social-follow-us {
+  font-size: 26px;
+  line-height: 1.15385;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.icon {
+  margin: 1px;
+  padding: 7px;
+}
+
+.social-icons {
+  display: flex;
+}
+
+/* Future section */
+#future-of-travel {
+  padding-top: 70px;
+}
+
+#black-background {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 57.5%;
+  background-color: #000;
+}
+
+.black-article {
+  margin-bottom: 150px;
+}
+
+.black-article h3 {
+  margin-top: 25px;
+  letter-spacing: 1px;
+}
+
+#headline-section-two h3 {
+  padding: 4px;
+  letter-spacing: 1px;
+}
+
+#headline-section-two p {
+  padding: 4px;
+  letter-spacing: 1px;
+}
+
+.more-button {
+  margin-bottom: 25px;
+}
+
+.black-img {
+  border-radius: 12px;
+  filter: drop-shadow(0 8px 6px rgba(0,0,0,.25));
+}
+
+/* ------------Highlighted News-------------- */
+.aspectRatioBox {
+  padding-top: calc(2 / 3 * 100%); /* aspect ratio 3:2 */
+  background-size: cover;
+  background-position: center;
+}
+
+.scrollableRow {
+  overflow-x: scroll;
+  margin-left: -24px;
+  margin-right: -24px;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.scrollableRow > [class*=col-] {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.future-travel-text {
+  margin: 70px 0 20px 0;
+}
+
+.newsletter-signup {
+  display: flex;
+  height:100%;
+  color:white;
+  background-color: black;
+  text-align: center;
+}
+
+.newsletter-inner {
+  max-width: 400px;
+  margin: auto;
+}
+
+@media (max-width: 991px) {
+  .newsletter-inner {
+    max-width: 600px;
+  }
+  .newsletter-signup {
+    margin-bottom:80px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .newsletter {
+    max-width: 1760px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 80px;
+    padding-left: 80px;
+    margin-bottom: 80px;
+    border-radius: 12px;
+  }
+}
+
+
+@media (min-width: 1440px) {
+  .newsletter-container {
+    border-radius: 12px;
+  }
+}
+
+.newsletter-title {
+  font-size: 26px;
+  line-height: 1.15385;
+  font-weight:700;
+  padding:20px 0;
+}
+
+.newsletter-inner-text {
+  padding-bottom:20px;
+}
+
+.newsletter-inner .btn-lg {
+  background-color:#bd006e;
+}
+
+.categories {
+  padding:70px 0 40px 0;
+}
+
+.category-header {
+  padding-bottom:15px;
+}
+
+.category-header .btn {
+  padding-right: 15px;
+}
+
+
+/* ------------Footer-------------- */
+.footer-container {
+  padding-right: 80px;
+  padding-left: 80px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.site-footer {
+  font-size: 14px;
+  padding-top: 48px;
+  border-top: 1px solid #ddd;
+  background-color: #f7f7f7;
+}
+
+.footer-column-title {
+  font-size: 12px;
+  line-height: 1.33333;
+  font-weight: 600;
+  text-transform: uppercase
+}
+
+.menu-item {
+  line-height: 1.28571;
+  margin-top: 16px;
+}
+
+.disclaimer {
+  font-weight: 600;
+  text-transform: uppercase
+}
+
+.top-footer-section {
+  border-bottom: 1px solid #ddd;
+}
+
+@media (min-width: 768px) and (max-width: 1199px)
+{
+  .footer-nav-column {
+      display: flex;
+      flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 1199px) {
+  .footer-column-section {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .footer-column-section:not(:first-child) {
+    padding-top:15px;
+  }
+}
+
+.menu-item {
+  flex-basis: 33.3333333%;
+}
+
+.copyright-section {
+  padding: 0 10px;
+}
+
+.footer-copyright {
+  padding: 20px 0;
+}
