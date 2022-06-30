@@ -10,6 +10,10 @@ a:hover {
   color: #222222;
 }
 
+.container-fluid {
+  max-width: 1500px;
+}
+
 #navContainer {
   padding-left: 0;
   padding-right: 0;

@@ -13,7 +13,7 @@
   </head>
   <body>
 
-    <header class="header container-fluid" id="navContainer">
+    <header class="header" id="navContainer">
         <nav class="navbar navbar-expand-md navbar-white d-flex flex-grow-1">
           <div class="brand-container d-flex align-items-center" data-target="#navbarNav">
             <a class="logo" href="#"><span>Airbnb</span></a>
@@ -130,20 +130,19 @@
     </header>
     
     <!-- Hero -->
-    <div class="main-container">
-    <div id="hero">  
-      <!-- <div class="container-xl"> -->
-          <div class="row">
-            <div class="d-flex flex-column align-self-center col-12 col-md-6 col-lg-4 hero-text order-1 order-md-0">
-              <span class="hero-date"><p>June 22, 2022</p></span>
-              <span class="promo-text"><a href="#"><h3>Introducing the $10,000,000 OMG! Fund for the world’s craziest listing ideas</h3></a></span>
-              <button type="button" class="btn btn-primary btn-lg">Read More</button>
-            </div>
-            <div class="col-12 col-md-6 col-lg-8 hero-container">
-              <img class="img-fluid hero-picture" src="./images/hero-img2.webp">
-            </div>
-          <!-- </div> -->
-        </div> 
+    <!-- <div class="main-container"> -->
+    <div class="container-fluid">
+      <div id="hero">  
+        <div class="row">
+          <div class="d-flex flex-column align-self-center col-12 col-md-6 col-lg-4 hero-text order-1 order-md-0">
+            <span class="hero-date"><p>June 22, 2022</p></span>
+            <span class="promo-text"><a href="#"><h3>Introducing the $10,000,000 OMG! Fund for the world’s craziest listing ideas</h3></a></span>
+            <button type="button" class="btn btn-primary btn-lg">Read More</button>
+          </div>
+          <div class="col-12 col-md-6 col-lg-8 hero-container">
+            <img class="img-fluid hero-picture" src="./images/hero-img2.webp">
+          </div>
+      </div> 
     </div>
 
     <!-- News -->
@@ -238,7 +237,7 @@
       <div id="black-background">
         <!-- use position absolute to position this background -->
       </div>
-      <div class="main-container"> <!-- Consider changing this class -->
+      <div class="container-fluid"> 
         <div class="row">
           <div id="headline-section-two" class="col-12 col-md-6">
             <h3>The future of travel</h3>
@@ -296,7 +295,7 @@
     </div>
 
     <!-- Category section -->
-    <div class="main-container">
+    <div class="container-fluid">
       <div class="categories">
           <div class="category-header"><h2>Categories</h2></div>
           <button type="button" class="btn btn-outline-dark">All</button>
@@ -307,7 +306,6 @@
           <button type="button" class="btn btn-outline-dark">Community</button>
           <button type="button" class="btn btn-outline-dark">Airbnb.org</button>
       </div>
-    <!-- </div> container end --> 
     
     <div class="pb-md-5">
       <div class="row">
