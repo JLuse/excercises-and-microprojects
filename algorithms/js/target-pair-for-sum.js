@@ -15,15 +15,18 @@
 // 3. if a number adds up to the SUM, push those numbers to a new array
 
 let findPairForSum = function (array, sum) {
-  for (let i = 0; i < array.length; i++) {
-    // console.log(array[i] + ' current');
-    if (array[i + 1] === undefined) {
-      break;
-    } else if (array[i] + array[i + 1] === sum){
-      console.log(array[i] + array[i + 1]);
-    }
-    
-  }
+  let hashMap = {};
+  let results = [];
+
+        for (let i = 0; i < array.length; i++){
+            if (hashMap[array[i]]){
+                results.push([hashMap[array[i]], array[i]])
+            }else{
+                hashMap[sum - array[i]] = array[i];
+            }
+          }
+          return results.flat().sort((a , b) => a - b);
+  
 };
 
 findPairForSum([3, 7, 10, 15, 9], 19)
