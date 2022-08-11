@@ -8,6 +8,7 @@ import App from './App';
 Sentry.init({
   dsn: "https://bbdfd48282eb4832a2cc8a054af2d350@o565143.ingest.sentry.io/6601493",
   integrations: [new BrowserTracing()],
+  environment: process.env.REACT_APP_ENV,
 
   // Set tracesSampleRate to 1.0 to capture 100%
   // of transactions for performance monitoring.
