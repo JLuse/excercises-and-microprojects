@@ -1,15 +1,33 @@
 let start = document.querySelector('.btn');
-let playerResponse
+const SELECTIONS = [
+  {
+    name: 'rock',
+    defeats: 'scissor'
+  },
+  {
+    name: 'paper',
+    defeats: 'scissor'
+  },
+  {
+    name: 'scissor',
+    defeats: 'paper'
+  }
+]
 
-let getInfo = function () {
+
+
+start.addEventListener("click", e => {
   let input = prompt('rock, paper, scissor?');
-  playerResponse = input;
-}
+  let userSelection = SELECTIONS.find(selection => selection.name === input)
+  runGame(userSelection)
+});
 
-start.addEventListener("click", getInfo);
-
-let game = function () {
-
+function runGame(selection) {
+  console.log(selection);
+  let botChoice = SELECTIONS[Math.floor(Math.random() * SELECTIONS.length)];
+  if (selection.name === botChoice.name) {
+    console.log('TIE, Bot: ' + botChoice.name + "USER: " + selection.name);
+  }
 }
 
 
