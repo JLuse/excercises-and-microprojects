@@ -49,7 +49,6 @@ multiRound.addEventListener("click", e => {
     if (validatePicks(input, valid)) {
       runGame(userSelection)
     }
-
     // The best out of three mode should only stop when either user or the bot player has won at least two rounds.
     // Maybe add if condtion to account for this, only progress round unless someone has score >= 2
     //
