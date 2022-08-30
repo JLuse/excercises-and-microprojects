@@ -43,7 +43,7 @@ multiRound.addEventListener("click", e => {
     let valid = false;
 
     // potentially an issue here
-    while (round < 3) {
+    while (userScore < 2 && botScore < 2) {
 
     let input = prompt('rock, paper, scissor?').toLowerCase();
     let userSelection = SELECTIONS.find(selection => selection.name === input)
