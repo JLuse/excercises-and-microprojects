@@ -11,15 +11,15 @@ Sentry.init({
   dsn: "https://e9322a4e7b6347be8f849f65c943b7ce@o565143.ingest.sentry.io/4503995763916800",
 
   tracesSampleRate: 1.0,
-  beforeSend(event) {
-    // Modify the event here
-    // if (event.user) {
-    //   // Don't send user's email address
-    //   delete event.user.email;
-    // }
-    console.log(event)
-    return event;
-  },
+  // beforeSend(event) {
+  //   // Modify the event here
+  //   // if (event.user) {
+  //   //   // Don't send user's email address
+  //   //   delete event.user.email;
+  //   // }
+  //   console.log(event)
+  //   return event;
+  // },
 });
 
 app.use(Sentry.Handlers.requestHandler());
@@ -29,15 +29,15 @@ app.use(Sentry.Handlers.requestHandler());
 //   name: "My First Test Transaction",
 // });
 
-// setTimeout(() => {
-//   try {
-//     foo();
-//   } catch (e) {
-//     Sentry.captureException(e);
-//   } finally {
-//     transaction.finish();
-//   }
-// }, 99);
+setTimeout(() => {
+  try {
+    zoo();
+  } catch (e) {
+    Sentry.captureException(e);
+  } finally {
+    transaction.finish();
+  }
+}, 99);
 
 
 
