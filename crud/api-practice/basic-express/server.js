@@ -13,22 +13,22 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
-// app.use(Sentry.Handlers.requestHandler());
+app.use(Sentry.Handlers.requestHandler());
 
-// const transaction = Sentry.startTransaction({
-//   op: "test",
-//   name: "My First Test Transaction",
-// });
+const transaction = Sentry.startTransaction({
+  op: "test",
+  name: "My First Test Transaction",
+});
 
-// setTimeout(() => {
-//   try {
-//     zoo();
-//   } catch (e) {
-//     Sentry.captureException(e);
-//   } finally {
-//     transaction.finish();
-//   }
-// }, 99);
+setTimeout(() => {
+  try {
+    Boom();
+  } catch (e) {
+    Sentry.captureException(e);
+  } finally {
+    transaction.finish();
+  }
+}, 99);
 
 
 
