@@ -58,6 +58,7 @@ function blackjackDeal() {
 }
 
 function displayCard(card, activePlayer) {
+  console.log(card)
   let cardImage = document.createElement('img');
   cardImage.src = `images/${card}.png`;
   document.querySelector(activePlayer['div']).appendChild(cardImage);
