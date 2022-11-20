@@ -8,6 +8,7 @@ let blackjackGame = {
   "Draws": 0,
 }
 
+
 const YOU = blackjackGame['You'];
 const DEALER = blackjackGame['Dealer'];
 
@@ -45,7 +46,7 @@ function blackjackDeal() {
   for (let j = 0; j < dealerImages.length; j++) {
       dealerImages[j].remove();
   }
-  HIT_SOUND.play();
+  // HIT_SOUND.play();
 
   YOU['score'] = 0;
   DEALER['score'] = 0;
@@ -58,11 +59,14 @@ function blackjackDeal() {
 }
 
 function displayCard(card, activePlayer) {
-  console.log(card)
-  let cardImage = document.createElement('img');
-  cardImage.src = `images/${card}.png`;
-  document.querySelector(activePlayer['div']).appendChild(cardImage);
-  HIT_SOUND.play();
+  // console.log(activePlayer)
+  // let cardImage = document.createElement('img');
+  let cardElement = document.createElement("li")
+  cardElement.className = 'card-container'
+  cardElement.innerHTML = card
+  // cardImage.src = `images/${card}.png`;
+  document.querySelector(activePlayer['div']).appendChild(cardElement);
+  // HIT_SOUND.play();
 }
 
 function pickCard() {
@@ -148,8 +152,18 @@ function updateTable() {
   let wins = document.querySelector('#wins');
   let losses = document.querySelector('#losses');
   let draws = document.querySelector('#draws');
+  let playerCards = document.querySelector('#your-box');
+  let dealerCards = document.querySelector('#dealer-box');
 
   wins.textContent = blackjackGame['Wins'];
   losses.textContent = blackjackGame['Losses'];
   draws.textContent = blackjackGame['Draws'];
+  removeAllCards(playerCards);
+  removeAllCards(dealerCards);
+}
+
+function removeAllCards(parent) {
+  while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+  }
 }
