@@ -53,15 +53,15 @@ function blackjackDeal() {
   document.querySelector('#your-blackjack-result').textContent = 0;
   document.querySelector('#dealer-blackjack-result').textContent = 0;
 
-  document.querySelector('#your-blackjack-result').style.color = 'white';
-  document.querySelector('#dealer-blackjack-result').style.color = 'white';
+  // document.querySelector('#your-blackjack-result').style.color = 'white';
+  // document.querySelector('#dealer-blackjack-result').style.color = 'white';
 }
 
 function displayCard(card, activePlayer) {
   // console.log(activePlayer)
   // let cardImage = document.createElement('img');
   let cardElement = document.createElement("li")
-  cardElement.className = 'card-container'
+  cardElement.className = 'card-list-item'
   cardElement.innerHTML = card
   // cardImage.src = `images/${card}.png`;
   document.querySelector(activePlayer['div']).appendChild(cardElement);
