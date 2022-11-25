@@ -4,16 +4,21 @@ const app = express()
 const PORT = 8000
 
 // ----- Server code: ------ //
-const rappers = {
-  'drake': { 
-    'age': 35,
-    'birthname': 'Aubrey Drake Graham',
-    'birthLocation': 'Toronto, Ontario, Canada'
+const djs = {
+  'kaskade': { 
+    'age': 51,
+    'birthname': 'Ryan Gary Raddon',
+    'birthLocation': 'Chicago, Illinois, U.S'
   },
-  'eminem': { 
-    'age': 50,
-    'birthname': 'Marshall Bruce Mathers III',
-    'birthLocation': 'Detroit, Michigan, U.S.'
+  'deadmau5': { 
+    'age': 41,
+    'birthname': 'Joel Thomas Zimmerman',
+    'birthLocation': 'Niagara Falls, Ontario, Canada'
+  },
+  'vonstroke': { 
+    'age': 51,
+    'birthname': 'Barclay Macbride Crenshaw',
+    'birthLocation': 'Detroit, Michigan, United States'
   },
   'unknown': { 
     'age': 0,
@@ -29,8 +34,8 @@ app.get('/', function rootHandler (req, res) {
 
 app.get('/api/:name', (req, res)=> {
   const paramName = req.params.name.toLowerCase()
-  rappers[paramName] ? res.json(rappers[paramName]) : res.json(rappers.unknown)
-  // res.json(rappers[paramName])
+  djs[paramName] ? res.json(djs[paramName]) : res.json(djs.unknown)
+  // res.json(djs[paramName])
 })
 
 app.listen(PORT, ()=>{

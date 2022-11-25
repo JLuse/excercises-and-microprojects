@@ -8,7 +8,6 @@ let blackjackGame = {
   "Draws": 0,
 }
 
-
 const YOU = blackjackGame['You'];
 const DEALER = blackjackGame['Dealer'];
 
