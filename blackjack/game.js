@@ -11,8 +11,6 @@ let blackjackGame = {
 const YOU = blackjackGame['You'];
 const DEALER = blackjackGame['Dealer'];
 
-// const HIT_SOUND = new Audio('sounds/swish.m4a');
-
 document.querySelector('#hit').addEventListener('click', blackjackHit);
 document.querySelector('#deal').addEventListener('click', blackjackDeal);
 document.querySelector('#stand').addEventListener('click', dealerLogic);
@@ -20,7 +18,6 @@ document.querySelector('#stand').addEventListener('click', dealerLogic);
 let STAND = true;
 
 function blackjackHit() {
-  r = document.querySelector('#blackjack-result').textContent;
   if (YOU['score'] <= 21 && STAND) {
       card = pickCard();
       showCard(YOU);
@@ -49,7 +46,6 @@ function blackjackDeal() {
   for (let j = 0; j < dealerImages.length; j++) {
       dealerImages[j].remove();
   }
-  // HIT_SOUND.play();
 
   YOU['score'] = 0;
   DEALER['score'] = 0;
@@ -93,15 +89,16 @@ function showScore(activePlayer) {
 }
 
 function dealerLogic() {
-  STAND = false
-  console.log('In stand ' + STAND)
   while (DEALER['score'] < 15) {
       let card = pickCard();
       displayCard(card, DEALER);
       updateScore(card, DEALER);
       showScore(DEALER);
   }
-  showResult(computeWinner());
+  if (STAND) {
+    showResult(computeWinner());
+    STAND = false
+  }
 }
 
 // Compute winner and return result
@@ -123,20 +120,15 @@ function computeWinner() {
 function showResult(result) {
   resultSpan = document.querySelector('#blackjack-result');
   if (result == YOU) {
-      resultSpan.textContent = 'You won! :D';
+      resultSpan.textContent = 'You won! =D';
       resultSpan.style.color = 'green';
-      const kaChing = new Audio('sounds/cash.mp3');
-      kaChing.play();
       blackjackGame['Wins']++;
   } else if (result == DEALER) {
-      resultSpan.textContent = 'You lost! :-(';
+      resultSpan.textContent = 'You lost! =(';
       resultSpan.style.color = 'red';
-      const aww = new Audio('sounds/aww.mp3');
-      aww.play();
       blackjackGame['Losses']++;
   } else {
-      resultSpan.textContent = 'You drew! :|';
-      // resultSpan.style.color = 'black';
+      resultSpan.textContent = 'You drew! =|';
       blackjackGame['Draws']++;
   }
 }
