@@ -11,22 +11,26 @@ let blackjackGame = {
 const YOU = blackjackGame['You'];
 const DEALER = blackjackGame['Dealer'];
 
-const HIT_SOUND = new Audio('sounds/swish.m4a');
+// const HIT_SOUND = new Audio('sounds/swish.m4a');
 
 document.querySelector('#hit').addEventListener('click', blackjackHit);
 document.querySelector('#deal').addEventListener('click', blackjackDeal);
 document.querySelector('#stand').addEventListener('click', dealerLogic);
 
+let STAND = true;
+
 function blackjackHit() {
   r = document.querySelector('#blackjack-result').textContent;
-      if (YOU['score'] <= 21) {
-          card = pickCard();
-          showCard(YOU);
-          updateScore(card, YOU);
-          showScore(YOU);
-      } else {
-          alert('Sorry! Cannot pick card after bust.')
-      }
+  if (YOU['score'] <= 21 && STAND) {
+      card = pickCard();
+      showCard(YOU);
+      updateScore(card, YOU);
+      showScore(YOU);
+  } else if (!STAND) {
+      alert('Sorry you\'re already standing. You need to deal again.')
+  } else {
+      alert('Sorry! Cannot pick card after bust.')
+  }
 }
 
 function showCard(activePlayer) {
@@ -50,22 +54,16 @@ function blackjackDeal() {
   YOU['score'] = 0;
   DEALER['score'] = 0;
 
+
   document.querySelector('#your-blackjack-result').textContent = 0;
   document.querySelector('#dealer-blackjack-result').textContent = 0;
-
-  // document.querySelector('#your-blackjack-result').style.color = 'white';
-  // document.querySelector('#dealer-blackjack-result').style.color = 'white';
 }
 
 function displayCard(card, activePlayer) {
-  // console.log(activePlayer)
-  // let cardImage = document.createElement('img');
   let cardElement = document.createElement("li")
   cardElement.className = 'card-list-item'
   cardElement.innerHTML = card
-  // cardImage.src = `images/${card}.png`;
   document.querySelector(activePlayer['div']).appendChild(cardElement);
-  // HIT_SOUND.play();
 }
 
 function pickCard() {
@@ -95,13 +93,14 @@ function showScore(activePlayer) {
 }
 
 function dealerLogic() {
+  STAND = false
+  console.log('In stand ' + STAND)
   while (DEALER['score'] < 15) {
       let card = pickCard();
       displayCard(card, DEALER);
       updateScore(card, DEALER);
       showScore(DEALER);
   }
-
   showResult(computeWinner());
 }
 
@@ -159,6 +158,7 @@ function updateTable() {
   draws.textContent = blackjackGame['Draws'];
   removeAllCards(playerCards);
   removeAllCards(dealerCards);
+  STAND = true;
 }
 
 function removeAllCards(parent) {

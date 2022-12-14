@@ -1,6 +1,7 @@
 import Head from 'next/head'
+import * as Sentry from "@sentry/react";
 
-export default function Home() {
+function Home() {
   return (
     <div className="container">
       <Head>
@@ -218,3 +219,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Sentry.withProfiler(Home)
