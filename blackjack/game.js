@@ -46,13 +46,22 @@ function blackjackDeal() {
   for (let j = 0; j < dealerImages.length; j++) {
       dealerImages[j].remove();
   }
-
+  
   YOU['score'] = 0;
   DEALER['score'] = 0;
 
-
   document.querySelector('#your-blackjack-result').textContent = 0;
   document.querySelector('#dealer-blackjack-result').textContent = 0;
+
+  for (let i = 0; i < 2; i++) {
+    displayCard(pickCard(), YOU);
+    updateScore(pickCard(), YOU);
+    showScore(YOU);
+
+    displayCard(pickCard(), DEALER);
+    updateScore(pickCard(), DEALER);
+    showScore(DEALER)
+  }
 }
 
 function displayCard(card, activePlayer) {
@@ -151,6 +160,7 @@ function updateTable() {
   removeAllCards(playerCards);
   removeAllCards(dealerCards);
   STAND = true;
+
 }
 
 function removeAllCards(parent) {
