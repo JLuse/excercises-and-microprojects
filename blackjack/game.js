@@ -52,14 +52,19 @@ function blackjackDeal() {
 
   document.querySelector('#your-blackjack-result').textContent = 0;
   document.querySelector('#dealer-blackjack-result').textContent = 0;
+  startingCards();
+}
 
+function startingCards() {
   for (let i = 0; i < 2; i++) {
-    displayCard(pickCard(), YOU);
-    updateScore(pickCard(), YOU);
+    let userCard = pickCard();
+    let botCard = pickCard();
+    displayCard(userCard, YOU);
+    updateScore(userCard, YOU);
     showScore(YOU);
 
-    displayCard(pickCard(), DEALER);
-    updateScore(pickCard(), DEALER);
+    displayCard(botCard, DEALER);
+    updateScore(botCard, DEALER);
     showScore(DEALER)
   }
 }
@@ -72,12 +77,14 @@ function displayCard(card, activePlayer) {
 }
 
 function pickCard() {
+  (console.log(blackjackGame['Cards'][Math.floor(Math.random() * blackjackGame['Cards'].length)]))
+
   return blackjackGame['Cards'][Math.floor(Math.random() * 13)];
 }
 
 function updateScore(card, activePlayer) {
   // If adding 11 keeps me below 21, add 11, otherwise add 1.
-  if (card == 'A') {
+  if (card === 'A') {
       if (activePlayer['score'] + 11 <= 21) {
           activePlayer['score'] += 11;
       } else {
@@ -86,6 +93,7 @@ function updateScore(card, activePlayer) {
   } else {
       activePlayer['score'] += blackjackGame['cardsMap'][card];
   }
+  
 }
 
 function showScore(activePlayer) {
