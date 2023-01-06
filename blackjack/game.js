@@ -18,7 +18,10 @@ document.querySelector('#stand').addEventListener('click', dealerLogic);
 let STAND = true;
 
 function blackjackHit() {
-  if (YOU['score'] <= 21 && STAND) {
+  if (YOU['score'] === 0 && DEALER['score'] === 0) {
+    alert('Sorry gotta DEAL the cards first')
+  }
+  else if (YOU['score'] <= 21 && STAND) {
       card = pickCard();
       showCard(YOU);
       updateScore(card, YOU);
@@ -26,7 +29,7 @@ function blackjackHit() {
   } else if (!STAND) {
       alert('Sorry you\'re already standing. You need to deal again.')
   } else {
-      alert('Sorry! Cannot pick card after bust.')
+      alert('Sorry! Cannot pick a card after bust.')
   }
 }
 
@@ -77,13 +80,12 @@ function displayCard(card, activePlayer) {
 }
 
 function pickCard() {
-  (console.log(blackjackGame['Cards'][Math.floor(Math.random() * blackjackGame['Cards'].length)]))
-
   return blackjackGame['Cards'][Math.floor(Math.random() * 13)];
 }
 
 function updateScore(card, activePlayer) {
   // If adding 11 keeps me below 21, add 11, otherwise add 1.
+  // console.log(activePlayer)
   if (card === 'A') {
       if (activePlayer['score'] + 11 <= 21) {
           activePlayer['score'] += 11;
@@ -93,7 +95,15 @@ function updateScore(card, activePlayer) {
   } else {
       activePlayer['score'] += blackjackGame['cardsMap'][card];
   }
-  
+
+  // Refactoring
+  let activePlayerHand = document.querySelector(activePlayer['div']).getElementsByClassName('card-list-item');
+
+  let sum = 0;
+  for (let i = 0; i < activePlayerHand.length; i++) {
+    sum += blackjackGame['cardsMap'][card]
+  }
+  console.log(sum)
 }
 
 function showScore(activePlayer) {
