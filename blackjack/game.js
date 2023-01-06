@@ -101,9 +101,10 @@ function updateScore(card, activePlayer) {
 
   let sum = 0;
   for (let i = 0; i < activePlayerHand.length; i++) {
-    sum += blackjackGame['cardsMap'][card]
+    sum += blackjackGame['cardsMap'][activePlayerHand[i].innerHTML]
   }
   console.log(sum)
+
 }
 
 function showScore(activePlayer) {
