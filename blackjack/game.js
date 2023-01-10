@@ -41,14 +41,6 @@ function blackjackDeal() {
   document.querySelector('#blackjack-result').textContent = 'Let\'s Play';
   document.querySelector('#blackjack-result').style.color = '#212529'
   updateTable();
-  let yourImages = document.querySelector('#your-box').querySelectorAll('img');
-  let dealerImages = document.querySelector('#dealer-box').querySelectorAll('img');
-  for (let i = 0; i < yourImages.length; i++) {
-      yourImages[i].remove();
-  }
-  for (let j = 0; j < dealerImages.length; j++) {
-      dealerImages[j].remove();
-  }
   
   YOU['score'] = 0;
   DEALER['score'] = 0;
@@ -97,15 +89,16 @@ function updateScore(card, activePlayer) {
   }
 
   // Refactoring
-  let activePlayerHand = document.querySelector(activePlayer['div']).getElementsByClassName('card-list-item');
+  let getActivePlayerHand = document.querySelector(activePlayer['div']).getElementsByClassName('card-list-item');
+  let activePlayerHand = []
 
   let sum = 0;
-  for (let i = 0; i < activePlayerHand.length; i++) {
-    sum += blackjackGame['cardsMap'][activePlayerHand[i].innerHTML]
+  for (let i = 0; i < getActivePlayerHand.length; i++) {
+    activePlayerHand.push(blackjackGame['cardsMap'][getActivePlayerHand[i].innerHTML])
   }
-  console.log(sum)
-
+  console.log(activePlayerHand)
 }
+
 
 function showScore(activePlayer) {
   if (activePlayer['score'] <= 21) {
@@ -172,6 +165,7 @@ function updateTable() {
   let draws = document.querySelector('#draws');
   let playerCards = document.querySelector('#your-box');
   let dealerCards = document.querySelector('#dealer-box');
+  // console.log(playerCards)
 
   wins.textContent = blackjackGame['Wins'];
   losses.textContent = blackjackGame['Losses'];
