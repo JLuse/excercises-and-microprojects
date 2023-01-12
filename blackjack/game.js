@@ -1,6 +1,6 @@
 let blackjackGame = {
-  "You": {"scoreSpan": "#your-blackjack-result", "div": "#your-box", "score": 0,},
-  "Dealer": {"scoreSpan": "#dealer-blackjack-result", "div": "#dealer-box", "score": 0,},
+  "You": {"scoreSpan": "#your-blackjack-result", "div": "#your-box", "score": 0, hand: []},
+  "Dealer": {"scoreSpan": "#dealer-blackjack-result", "div": "#dealer-box", "score": 0, hand: []},
   "Cards": ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'],
   "cardsMap": {'A': [1, 11], '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 10, 'Q': 10, 'K': 10,},
   "Wins": 0,
@@ -25,6 +25,9 @@ function blackjackHit() {
       card = pickCard();
       showCard(YOU);
       updateScore(card, YOU);
+
+      YOU['hand'].push(card)
+
       showScore(YOU);
   } else if (!STAND) {
       alert('Sorry you\'re already standing. You need to deal again.')
@@ -34,6 +37,7 @@ function blackjackHit() {
 }
 
 function showCard(activePlayer) {
+  console.log(activePlayer['hand'])
   displayCard(card, activePlayer);
 }
 
@@ -54,10 +58,12 @@ function startingCards() {
   for (let i = 0; i < 2; i++) {
     let userCard = pickCard();
     let botCard = pickCard();
+    YOU['hand'].push(userCard)
     displayCard(userCard, YOU);
     updateScore(userCard, YOU);
     showScore(YOU);
 
+    DEALER['hand'].push(botCard)
     displayCard(botCard, DEALER);
     updateScore(botCard, DEALER);
     showScore(DEALER)
@@ -65,6 +71,7 @@ function startingCards() {
 }
 
 function displayCard(card, activePlayer) {
+  // console.log(activePlayer['hand'])
   let cardElement = document.createElement("li")
   cardElement.className = 'card-list-item'
   cardElement.innerHTML = card
@@ -88,15 +95,17 @@ function updateScore(card, activePlayer) {
       activePlayer['score'] += blackjackGame['cardsMap'][card];
   }
 
-  // Refactoring
-  let getActivePlayerHand = document.querySelector(activePlayer['div']).getElementsByClassName('card-list-item');
-  let activePlayerHand = []
+  // Refactoring pt1
+  // let getActivePlayerHand = document.querySelector(activePlayer['div']).getElementsByClassName('card-list-item')
+  // let sum = 0;
+  // for (let i = 0; i < getActivePlayerHand.length; i++) {
+  //   activePlayerHand.push(blackjackGame['cardsMap'][getActivePlayerHand[i].innerHTML])
+  // }
+  // console.log(activePlayerHand)
 
-  let sum = 0;
-  for (let i = 0; i < getActivePlayerHand.length; i++) {
-    activePlayerHand.push(blackjackGame['cardsMap'][getActivePlayerHand[i].innerHTML])
-  }
-  console.log(activePlayerHand)
+  // refacoring pt2
+  // console.log(YOU['hand'])
+  // console.log(DEALER['hand'])
 }
 
 
@@ -112,6 +121,7 @@ function showScore(activePlayer) {
 function dealerLogic() {
   while (DEALER['score'] < 15) {
       let card = pickCard();
+      DEALER['hand'].push(card)
       displayCard(card, DEALER);
       updateScore(card, DEALER);
       showScore(DEALER);
@@ -165,7 +175,6 @@ function updateTable() {
   let draws = document.querySelector('#draws');
   let playerCards = document.querySelector('#your-box');
   let dealerCards = document.querySelector('#dealer-box');
-  // console.log(playerCards)
 
   wins.textContent = blackjackGame['Wins'];
   losses.textContent = blackjackGame['Losses'];
@@ -180,4 +189,7 @@ function removeAllCards(parent) {
   while (parent.firstChild) {
       parent.removeChild(parent.firstChild);
   }
+  // Start a new hand
+  YOU['hand'] = [];
+  DEALER['hand'] = [];
 }
