@@ -23,22 +23,15 @@ function blackjackHit() {
   }
   else if (YOU['score'] <= 21 && STAND) {
       card = pickCard();
-      showCard(YOU);
-      updateScore(card, YOU);
-
       YOU['hand'].push(card)
-
+      displayCard(YOU);
+      updateScore(card, YOU);
       showScore(YOU);
   } else if (!STAND) {
       alert('Sorry you\'re already standing. You need to deal again.')
   } else {
       alert('Sorry! Cannot pick a card after bust.')
   }
-}
-
-function showCard(activePlayer) {
-  console.log(activePlayer['hand'])
-  displayCard(card, activePlayer);
 }
 
 function blackjackDeal() {
@@ -59,22 +52,34 @@ function startingCards() {
     let userCard = pickCard();
     let botCard = pickCard();
     YOU['hand'].push(userCard)
-    displayCard(userCard, YOU);
+    // displayCard(userCard, YOU);
+    displayCard(YOU);
     updateScore(userCard, YOU);
     showScore(YOU);
 
     DEALER['hand'].push(botCard)
-    displayCard(botCard, DEALER);
+    // displayCard(botCard, DEALER);
+    displayCard(DEALER);
     updateScore(botCard, DEALER);
     showScore(DEALER)
   }
 }
 
-function displayCard(card, activePlayer) {
-  // console.log(activePlayer['hand'])
+// Orginal function - Refactoring
+// function displayCard(card, activePlayer) {
+//   // console.log(activePlayer['hand'])
+//   let cardElement = document.createElement("li")
+//   cardElement.className = 'card-list-item'
+//   cardElement.innerHTML = card
+//   document.querySelector(activePlayer['div']).appendChild(cardElement);
+// }
+
+function displayCard(activePlayer) {
   let cardElement = document.createElement("li")
   cardElement.className = 'card-list-item'
-  cardElement.innerHTML = card
+  for (let i = 0; i < activePlayer['hand'].length; i++) {
+    cardElement.innerHTML = activePlayer['hand'][i]
+  }
   document.querySelector(activePlayer['div']).appendChild(cardElement);
 }
 
@@ -84,7 +89,6 @@ function pickCard() {
 
 function updateScore(card, activePlayer) {
   // If adding 11 keeps me below 21, add 11, otherwise add 1.
-  // console.log(activePlayer)
   if (card === 'A') {
       if (activePlayer['score'] + 11 <= 21) {
           activePlayer['score'] += 11;
@@ -94,18 +98,6 @@ function updateScore(card, activePlayer) {
   } else {
       activePlayer['score'] += blackjackGame['cardsMap'][card];
   }
-
-  // Refactoring pt1
-  // let getActivePlayerHand = document.querySelector(activePlayer['div']).getElementsByClassName('card-list-item')
-  // let sum = 0;
-  // for (let i = 0; i < getActivePlayerHand.length; i++) {
-  //   activePlayerHand.push(blackjackGame['cardsMap'][getActivePlayerHand[i].innerHTML])
-  // }
-  // console.log(activePlayerHand)
-
-  // refacoring pt2
-  // console.log(YOU['hand'])
-  // console.log(DEALER['hand'])
 }
 
 
@@ -122,7 +114,7 @@ function dealerLogic() {
   while (DEALER['score'] < 15) {
       let card = pickCard();
       DEALER['hand'].push(card)
-      displayCard(card, DEALER);
+      displayCard(DEALER);
       updateScore(card, DEALER);
       showScore(DEALER);
   }
