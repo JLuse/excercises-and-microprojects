@@ -51,28 +51,17 @@ function startingCards() {
   for (let i = 0; i < 2; i++) {
     let userCard = pickCard();
     let botCard = pickCard();
-    YOU['hand'].push(userCard)
-    // displayCard(userCard, YOU);
+    YOU['hand'].push(userCard);
     displayCard(YOU);
     updateScore(userCard, YOU);
     showScore(YOU);
 
     DEALER['hand'].push(botCard)
-    // displayCard(botCard, DEALER);
     displayCard(DEALER);
     updateScore(botCard, DEALER);
     showScore(DEALER)
   }
 }
-
-// Orginal function - Refactoring
-// function displayCard(card, activePlayer) {
-//   // console.log(activePlayer['hand'])
-//   let cardElement = document.createElement("li")
-//   cardElement.className = 'card-list-item'
-//   cardElement.innerHTML = card
-//   document.querySelector(activePlayer['div']).appendChild(cardElement);
-// }
 
 function displayCard(activePlayer) {
   let cardElement = document.createElement("li")
