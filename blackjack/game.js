@@ -1,6 +1,6 @@
 let blackjackGame = {
-  "You": {"scoreSpan": "#your-blackjack-result", "div": "#your-box", "score": 0, hand: []},
-  "Dealer": {"scoreSpan": "#dealer-blackjack-result", "div": "#dealer-box", "score": 0, hand: []},
+  "You": {"scoreSpan": "#your-blackjack-result", "div": "#your-box", "score": 0, hand: [], "sum": 0},
+  "Dealer": {"scoreSpan": "#dealer-blackjack-result", "div": "#dealer-box", "score": 0, hand: [], "sum": 0},
   "Cards": ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'],
   "cardsMap": {'A': [1, 11], '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 10, 'Q': 10, 'K': 10,},
   "Wins": 0,
@@ -87,6 +87,12 @@ function updateScore(card, activePlayer) {
   } else {
       activePlayer['score'] += blackjackGame['cardsMap'][card];
   }
+
+  // Refactor to get sum from players hand
+  for (let i = 0; i < activePlayer['hand'].length; i++) {
+    activePlayer['sum'] += blackjackGame['cardsMap'][activePlayer['hand'][i]]
+  }
+  console.log(activePlayer['sum'])
 }
 
 
