@@ -1,6 +1,6 @@
 let blackjackGame = {
-  "You": {"scoreSpan": "#your-blackjack-result", "div": "#your-box", "score": 0, hand: [], "sum": 0},
-  "Dealer": {"scoreSpan": "#dealer-blackjack-result", "div": "#dealer-box", "score": 0, hand: [], "sum": 0},
+  "You": {"scoreSpan": "#your-blackjack-result", "div": "#your-box", "score": 0, hand: [], "sum": 0, "aces": 0},
+  "Dealer": {"scoreSpan": "#dealer-blackjack-result", "div": "#dealer-box", "score": 0, hand: [], "sum": 0, "aces": 0},
   "Cards": ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'],
   "cardsMap": {'A': [1, 11], '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 10, 'Q': 10, 'K': 10,},
   "Wins": 0,
@@ -88,11 +88,38 @@ function updateScore(card, activePlayer) {
       activePlayer['score'] += blackjackGame['cardsMap'][card];
   }
 
-  // Refactor to get sum from players hand
-  for (let i = 0; i < activePlayer['hand'].length; i++) {
-    activePlayer['sum'] += blackjackGame['cardsMap'][activePlayer['hand'][i]]
+  //-- Refactor1 to get sum from players hand --//
+  // for (let i = 0; i < activePlayer['hand'].length; i++) {
+  //   // console.log(activePlayer['hand'][i])
+  //   if (activePlayer['hand'][i] === 'A') {
+  //     activePlayer['aces']++;
+  //   } else {
+  //     activePlayer['sum'] += blackjackGame['cardsMap'][activePlayer['hand'][i]]
+  //   }
+  //   // activePlayer['sum'] += blackjackGame['cardsMap'][activePlayer['hand'][i]]
+  //   console.log(activePlayer['div'] + ' ' + activePlayer['sum'])
+  // }
+
+  // for (let j = activePlayer['aces']; j > 0; j--) {
+  //   if (activePlayer['sum'] > (11 - j)) {
+  //     activePlayer['sum'] += 1
+  //   } else {
+  //     activePlayer['sum'] += 11
+  //   }
+  // }
+  // console.log(activePlayer)
+
+  //-- Refactor2 to get sum from players hand --//
+    let ace;
+    activePlayer['sum'] = activePlayer['hand'].reduce((sum, current) => {
+    ace |= blackjackGame['cardsMap'][current] === 1;
+    sum += blackjackGame['cardsMap'][current];
+    return sum
+  }, 0);
+  if (ace && activePlayer['sum'] + 10 <= 21) {
+    activePlayer['sum'] += 10;
   }
-  console.log(activePlayer['sum'])
+  console.log(activePlayer)
 }
 
 
@@ -178,5 +205,9 @@ function removeAllCards(parent) {
   }
   // Start a new hand
   YOU['hand'] = [];
+  YOU['aces'] = 0
+  YOU['sum'] = 0
   DEALER['hand'] = [];
+  DEALER['aces'] = 0
+  DEALER['sum'] = 0
 }
