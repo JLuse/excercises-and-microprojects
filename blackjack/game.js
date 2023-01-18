@@ -2,7 +2,7 @@ let blackjackGame = {
   "You": {"scoreSpan": "#your-blackjack-result", "div": "#your-box", "score": 0, hand: [], "sum": 0, "aces": 0},
   "Dealer": {"scoreSpan": "#dealer-blackjack-result", "div": "#dealer-box", "score": 0, hand: [], "sum": 0, "aces": 0},
   "Cards": ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'],
-  "cardsMap": {'A': [1, 11], '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 10, 'Q': 10, 'K': 10,},
+  "cardsMap": {'A': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 10, 'Q': 10, 'K': 10,},
   "Wins": 0,
   "Losses": 0,
   "Draws": 0,
@@ -25,7 +25,8 @@ function blackjackHit() {
       card = pickCard();
       YOU['hand'].push(card)
       displayCard(YOU);
-      updateScore(card, YOU);
+      // updateScore(card, YOU);
+      updateScore(YOU);
       showScore(YOU);
   } else if (!STAND) {
       alert('Sorry you\'re already standing. You need to deal again.')
@@ -53,12 +54,14 @@ function startingCards() {
     let botCard = pickCard();
     YOU['hand'].push(userCard);
     displayCard(YOU);
-    updateScore(userCard, YOU);
+    // updateScore(userCard, YOU);
+    updateScore(YOU);
     showScore(YOU);
 
     DEALER['hand'].push(botCard)
     displayCard(DEALER);
-    updateScore(botCard, DEALER);
+    // updateScore(botCard, DEALER);
+    updateScore(DEALER);
     showScore(DEALER)
   }
 }
@@ -76,17 +79,17 @@ function pickCard() {
   return blackjackGame['Cards'][Math.floor(Math.random() * 13)];
 }
 
-function updateScore(card, activePlayer) {
-  // If adding 11 keeps me below 21, add 11, otherwise add 1.
-  if (card === 'A') {
-      if (activePlayer['score'] + 11 <= 21) {
-          activePlayer['score'] += 11;
-      } else {
-          activePlayer['score'] += 1;
-      }
-  } else {
-      activePlayer['score'] += blackjackGame['cardsMap'][card];
-  }
+function updateScore(activePlayer) {
+  // Orginal
+  // if (card === 'A') {
+  //     if (activePlayer['score'] + 11 <= 21) {
+  //         activePlayer['score'] += 11;
+  //     } else {
+  //         activePlayer['score'] += 1;
+  //     }
+  // } else {
+  //     activePlayer['score'] += blackjackGame['cardsMap'][card];
+  // }
 
   //-- Refactor1 to get sum from players hand --//
   // for (let i = 0; i < activePlayer['hand'].length; i++) {
@@ -110,16 +113,29 @@ function updateScore(card, activePlayer) {
   // console.log(activePlayer)
 
   //-- Refactor2 to get sum from players hand --//
+  //   let ace;
+  //   activePlayer['sum'] = activePlayer['hand'].reduce((sum, current) => {
+  //   ace |= blackjackGame['cardsMap'][current] === 1;
+  //   sum += blackjackGame['cardsMap'][current];
+  //   return sum
+  // }, 0);
+  // console.log(ace)
+  // if (ace && activePlayer['sum'] + 10 <= 21) {
+  //   activePlayer['sum'] += 10;
+  // }
+  // console.log(activePlayer)
+
+  // -- Refactor 3, final -- //
     let ace;
-    activePlayer['sum'] = activePlayer['hand'].reduce((sum, current) => {
-    ace |= blackjackGame['cardsMap'][current] === 1;
-    sum += blackjackGame['cardsMap'][current];
-    return sum
-  }, 0);
-  if (ace && activePlayer['sum'] + 10 <= 21) {
-    activePlayer['sum'] += 10;
-  }
-  console.log(activePlayer)
+    activePlayer['score'] = activePlayer['hand'].reduce((sum, current) => {
+      ace |= blackjackGame['cardsMap'][current] === 1;
+      sum += blackjackGame['cardsMap'][current];
+      return sum
+    }, 0);
+    if (ace && activePlayer['score'] + 10 <= 21) {
+      activePlayer['score'] += 10;
+    }
+    console.log(activePlayer)
 }
 
 
@@ -137,7 +153,8 @@ function dealerLogic() {
       let card = pickCard();
       DEALER['hand'].push(card)
       displayCard(DEALER);
-      updateScore(card, DEALER);
+      // updateScore(card, DEALER);
+      updateScore(DEALER);
       showScore(DEALER);
   }
   if (STAND) {
