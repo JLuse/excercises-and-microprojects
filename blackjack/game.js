@@ -1,6 +1,6 @@
 let blackjackGame = {
-  "You": {"scoreSpan": "#your-blackjack-result", "div": "#your-box", "score": 0, hand: [], "sum": 0, "aces": 0},
-  "Dealer": {"scoreSpan": "#dealer-blackjack-result", "div": "#dealer-box", "score": 0, hand: [], "sum": 0, "aces": 0},
+  "You": {"scoreSpan": "#your-blackjack-result", "div": "#your-box", "score": 0, hand: []},
+  "Dealer": {"scoreSpan": "#dealer-blackjack-result", "div": "#dealer-box", "score": 0, hand: []},
   "Cards": ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'],
   "cardsMap": {'A': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 10, 'Q': 10, 'K': 10,},
   "Wins": 0,
@@ -25,7 +25,6 @@ function blackjackHit() {
       card = pickCard();
       YOU['hand'].push(card)
       displayCard(YOU);
-      // updateScore(card, YOU);
       updateScore(YOU);
       showScore(YOU);
   } else if (!STAND) {
@@ -54,13 +53,11 @@ function startingCards() {
     let botCard = pickCard();
     YOU['hand'].push(userCard);
     displayCard(YOU);
-    // updateScore(userCard, YOU);
     updateScore(YOU);
     showScore(YOU);
 
     DEALER['hand'].push(botCard)
     displayCard(DEALER);
-    // updateScore(botCard, DEALER);
     updateScore(DEALER);
     showScore(DEALER)
   }
@@ -80,62 +77,15 @@ function pickCard() {
 }
 
 function updateScore(activePlayer) {
-  // Orginal
-  // if (card === 'A') {
-  //     if (activePlayer['score'] + 11 <= 21) {
-  //         activePlayer['score'] += 11;
-  //     } else {
-  //         activePlayer['score'] += 1;
-  //     }
-  // } else {
-  //     activePlayer['score'] += blackjackGame['cardsMap'][card];
-  // }
-
-  //-- Refactor1 to get sum from players hand --//
-  // for (let i = 0; i < activePlayer['hand'].length; i++) {
-  //   // console.log(activePlayer['hand'][i])
-  //   if (activePlayer['hand'][i] === 'A') {
-  //     activePlayer['aces']++;
-  //   } else {
-  //     activePlayer['sum'] += blackjackGame['cardsMap'][activePlayer['hand'][i]]
-  //   }
-  //   // activePlayer['sum'] += blackjackGame['cardsMap'][activePlayer['hand'][i]]
-  //   console.log(activePlayer['div'] + ' ' + activePlayer['sum'])
-  // }
-
-  // for (let j = activePlayer['aces']; j > 0; j--) {
-  //   if (activePlayer['sum'] > (11 - j)) {
-  //     activePlayer['sum'] += 1
-  //   } else {
-  //     activePlayer['sum'] += 11
-  //   }
-  // }
-  // console.log(activePlayer)
-
-  //-- Refactor2 to get sum from players hand --//
-  //   let ace;
-  //   activePlayer['sum'] = activePlayer['hand'].reduce((sum, current) => {
-  //   ace |= blackjackGame['cardsMap'][current] === 1;
-  //   sum += blackjackGame['cardsMap'][current];
-  //   return sum
-  // }, 0);
-  // console.log(ace)
-  // if (ace && activePlayer['sum'] + 10 <= 21) {
-  //   activePlayer['sum'] += 10;
-  // }
-  // console.log(activePlayer)
-
-  // -- Refactor 3, final -- //
-    let ace;
-    activePlayer['score'] = activePlayer['hand'].reduce((sum, current) => {
-      ace |= blackjackGame['cardsMap'][current] === 1;
-      sum += blackjackGame['cardsMap'][current];
-      return sum
-    }, 0);
-    if (ace && activePlayer['score'] + 10 <= 21) {
-      activePlayer['score'] += 10;
-    }
-    console.log(activePlayer)
+  let ace;
+  activePlayer['score'] = activePlayer['hand'].reduce((sum, current) => {
+    ace |= blackjackGame['cardsMap'][current] === 1;
+    sum += blackjackGame['cardsMap'][current];
+    return sum
+  }, 0);
+  if (ace && activePlayer['score'] + 10 <= 21) {
+    activePlayer['score'] += 10;
+  }
 }
 
 
@@ -153,7 +103,6 @@ function dealerLogic() {
       let card = pickCard();
       DEALER['hand'].push(card)
       displayCard(DEALER);
-      // updateScore(card, DEALER);
       updateScore(DEALER);
       showScore(DEALER);
   }
@@ -166,7 +115,6 @@ function dealerLogic() {
 // Compute winner and return result
 function computeWinner() {
   let winner;
-
   if (YOU['score'] <= 21) {
       if (YOU['score'] > DEALER['score'] || DEALER['score'] > 21) {
           winner = YOU;
@@ -222,9 +170,5 @@ function removeAllCards(parent) {
   }
   // Start a new hand
   YOU['hand'] = [];
-  YOU['aces'] = 0
-  YOU['sum'] = 0
   DEALER['hand'] = [];
-  DEALER['aces'] = 0
-  DEALER['sum'] = 0
 }
