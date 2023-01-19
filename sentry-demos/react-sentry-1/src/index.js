@@ -12,6 +12,8 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
+console.log(process.env.npm_package_version)
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
