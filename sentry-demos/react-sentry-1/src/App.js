@@ -2,8 +2,8 @@ import ProfileCard from "./ProfileCard"
 
 function App() {
   
-  function sayHello() {
-    console.log('hello')
+  function sayMello() {
+    throw new Error('you have throw an error again');
   };
 
   return (
@@ -12,7 +12,7 @@ function App() {
       <ProfileCard />
       <ProfileCard />
       <ProfileCard />
-      <button onClick={sayHello}>Click me!</button>
+      <button onClick={sayMello}>Click me!</button>
     </div>
   );
 }
