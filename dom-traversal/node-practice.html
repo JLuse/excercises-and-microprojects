@@ -50,17 +50,16 @@
       // Use node traversal to assign the correct DOM node
       var Peter = TomAndMary.nextSibling.nextSibling.childNodes[1]
       var Priscilla = TomAndMary.nextSibling.nextSibling.childNodes[5]
-      var BenAndLiza = TomAndMary.nextSibling.firstChild
-      var Judy = TomAndMary
-      var JackAndJay = TomAndMary
-      var FamilyTree = TomAndMary
+      var BenAndLiza = TomAndMary.parentNode.nextSibling.nextSibling.childNodes[1]
+      var Judy = TomAndMary.parentNode.nextSibling.nextSibling.childNodes[3].childNodes[3]
+      var JackAndJay = TomAndMary.parentNode.parentNode.previousSibling.previousSibling
+      var FamilyTree = TomAndMary.parentNode.parentNode.parentNode.parentNode.parentNode
       
       console.log(Peter.textContent);
       // -> Peter
       console.log(Priscilla.textContent);
       // -> Priscilla
-      // console.log(BenAndLiza.textContent);
-      console.log(BenAndLiza);
+      console.log(BenAndLiza.textContent);
       // -> Ben and Liza
       console.log(Judy.textContent);
       // -> Judy
