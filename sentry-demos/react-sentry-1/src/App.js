@@ -2,8 +2,8 @@ import ProfileCard from "./ProfileCard"
 
 function App() {
   
-  function sayMello() {
-    throw new Error('you have throw an error again');
+  function releaseMe() {
+    throw new Error('this is a trggered error');
   };
 
   return (
@@ -12,7 +12,7 @@ function App() {
       <ProfileCard />
       <ProfileCard />
       <ProfileCard />
-      <button onClick={sayMello}>Click me!</button>
+      <button onClick={releaseMe}>Click me!</button>
     </div>
   );
 }
