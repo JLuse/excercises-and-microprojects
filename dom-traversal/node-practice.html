@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="familyTree">
+      <h2>The Perterson Family</h2>
+      <ul>
+        <li>
+          <h3>Jack and Jay</h3>
+
+          <ul>
+
+            <li>
+              <h3 id="TomAndMary">Tom and Mary</h3>
+
+              <ul>
+                <li>Peter</li>
+                <li>Patricia</li>
+                <li>Priscilla</li>
+              </ul> 
+
+            </li>
+
+            <li>
+              <h3>Ben and Liza</h3>
+              <ul>
+                <li>John</li>
+                <li>Judy</li>
+                <li>Jerry</li>
+              </ul>    
+            </li>
+
+          </ul>
+
+        </li>
+      </ul>
+    </div>
+    <script>
+      var TomAndMary = document.getElementById("TomAndMary");
+      // Example for Patricia
+      var Patricia = TomAndMary.nextSibling.nextSibling.childNodes[3];
+      console.log(Patricia.textContent);
+      // -> Patricia
+      
+      // Use node traversal to assign the correct DOM node
+      var Peter = TomAndMary.nextSibling.nextSibling.childNodes[1]
+      var Priscilla = TomAndMary.nextSibling.nextSibling.childNodes[5]
+      var BenAndLiza = TomAndMary.parentNode.nextSibling.nextSibling.childNodes[1]
+      var Judy = TomAndMary.parentNode.nextSibling.nextSibling.childNodes[3].childNodes[3]
+      var JackAndJay = TomAndMary.parentNode.parentNode.previousSibling.previousSibling
+      var FamilyTree = TomAndMary.parentNode.parentNode.parentNode.parentNode.parentNode
+      
+      console.log(Peter.textContent);
+      // -> Peter
+      console.log(Priscilla.textContent);
+      // -> Priscilla
+      console.log(BenAndLiza.textContent);
+      // -> Ben and Liza
+      console.log(Judy.textContent);
+      // -> Judy
+      console.log(JackAndJay.textContent);
+      // -> Jack and Jay
+      console.log(FamilyTree.id);
+      // -> familyTree
+    </script>
+  </body>
+</html>
