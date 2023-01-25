@@ -10,6 +10,11 @@ Sentry.init({
   enviroment: 'dev',
   // release: 'react-sentry@0.0.5',
   tracesSampleRate: 1.0,
+  beforeSendTransaction(event) {
+    // event.tags.push({"tags":{ key: 'KEY', quantity: "quantity" }})
+    event.tags['SDKRangers'] = 'Custom value for a tag'
+    console.log(event)
+  }
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
