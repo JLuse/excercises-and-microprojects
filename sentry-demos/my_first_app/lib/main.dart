@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+// void main() {
+//   runApp(const MyApp());
+// }
+
+Future<void> main() async {
+  await SentryFlutter.init(
+    (options) => options.dsn = 'https://e9322a4e7b6347be8f849f65c943b7ce@o565143.ingest.sentry.io/4503995763916800',
+    appRunner: () => runApp(MyApp()),
+  );
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
