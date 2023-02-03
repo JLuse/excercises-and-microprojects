@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <ul>
+      <li>A</li>
+      <li>B
+        <ul>
+          <li>B1</li>
+          <li>B2</li>
+          <li>B3</li>
+        </ul>
+      </li>
+      <li>C</li>
+      <li>D</li>
+    </ul>
+    <script>
+      var ul = document.querySelector("ul");
+      // Assign the correct DOM node to each variable below
+      var A = ul.children[0];
+      var C = ul.children[2]
+      var B2 = ul.children[1].childNodes[1].children[1]
+    </script>
+  </body>
+</html>
