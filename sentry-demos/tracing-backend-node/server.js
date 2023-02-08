@@ -18,12 +18,10 @@ Sentry.init({
     }),
   ],
   beforeSend(event) {
-    // Modify or drop the event here
-    // if (event.user) {
-    //   // Don't send user's email address
-    //   delete event.user.email;
-    // }
-    console.log(event)
+    if (event.transaction === 'POST /graphql') {
+      console.log(event)
+      return null
+    }
     return event;
   },
   // debug: true,
@@ -40,13 +38,16 @@ app.get("/", function rootHandler(req, res) {
 });
 
 app.get("/new", function rootHandler(req, res) {
-  res.end("This a new a new");
-  console.log('hey')
+  // res.end("This a new a new");
+  throw new Error("This is an error from new");
 });
+
+// app.get("/debug-sentry?some_param=10&other_param=&last_param=\"Hello\"", function mainHandler(req, res) {
+//   throw new Error("My first Sentry error!");
+// });
 
 app.get("/debug-sentry", function mainHandler(req, res) {
   throw new Error("My first Sentry error!");
-  
 });
 
 app.use(Sentry.Handlers.errorHandler());
