@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <input/>
+    <script>
+      var inFocus = false;
+      var input = document.querySelector("input");
+      // Add "focus" event handler
+      input.addEventListener('focus', function(e) {
+        inFocus = true
+      })
+      
+      input.addEventListener('blur', function(e) {
+        inFocus = false
+      })
+
+    </script>
+  </body>
+</html>
