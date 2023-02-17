@@ -10,6 +10,7 @@ Sentry.init({
   dsn: SENTRY_DSN || 'https://875b162b0be648eaa85db613009c1a1a@o565143.ingest.sentry.io/4504087486922752',
   // Adjust this value in production, or use tracesSampler for greater control
   tracesSampleRate: 1.0,
+  // tunnel: "/api/tunnel",
   // ...
   // Note: if you want to override the automatic release value, do not set a
   // `release` value here - use the environment variable `SENTRY_RELEASE`, so
