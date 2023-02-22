@@ -17,13 +17,13 @@ Sentry.init({
       // router: someRouter,
     }),
   ],
-  beforeSend(event) {
-    if (event.transaction === 'POST /graphql') {
-      console.log(event)
-      return null
-    }
-    return event;
-  },
+  // beforeSend(event) {
+  //   if (event.transaction === 'POST /graphql') {
+  //     console.log(event)
+  //     return null
+  //   }
+  //   return event;
+  // },
   // debug: true,
   tracesSampleRate: 1.0,
 
