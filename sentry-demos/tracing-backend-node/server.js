@@ -11,19 +11,19 @@ Sentry.init({
     new Sentry.Integrations.Http({ tracing: true }),
     // enable Express.js middleware tracing
     new Tracing.Integrations.Express({
-      // to trace all requests to the default router
+      // to trac requests to the default router
       app,
       // alternatively, you can specify the routes you want to trace:
       // router: someRouter,
     }),
   ],
-  beforeSend(event) {
-    if (event.transaction === 'POST /graphql') {
-      console.log(event)
-      return null
-    }
-    return event;
-  },
+  // beforeSend(event) {
+  //   if (event.transaction === 'POST /graphql') {
+  //     console.log(event)
+  //     return null
+  //   }
+  //   return event;
+  // },
   // debug: true,
   tracesSampleRate: 1.0,
 
