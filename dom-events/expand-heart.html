@@ -1,5 +1,5 @@
-<!-- You need to listen for the "keyup" event on the window object. When up arrow is pressed, the heart should grow in size by 10%. When down arrow is pressed, the heart should shrink in size by 10%. -->
-<!DOCTYPE html>
+
+     <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -10,8 +10,20 @@
   <body>
     <p id="heart" style="font-size: 15px;">❤️</p>
     <script>
-      // Implement your code
-      
+      let heart = document.getElementById("heart");
+        let onKeyup = function(event){
+          if (event.key === 'ArrowUp') {
+            heart.style.fontSize = parseFloat(heart.style.fontSize) * 1.1 + 'px';
+            if (parseFloat(heart.style.fontSize) >= 50) {
+              heart.innerHTML = "💔";
+              window.removeEventListener('keyup', onKeyup);
+            }
+          }
+          if (event.key === 'ArrowDown') {
+            heart.style.fontSize = parseFloat(heart.style.fontSize) * 0.9 + 'px';
+          }
+        };
+        window.addEventListener('keyup', onKeyup);
     </script>
   </body>
 </html>
