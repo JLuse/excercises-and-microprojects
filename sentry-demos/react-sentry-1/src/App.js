@@ -3,7 +3,7 @@ import ProfileCard from "./ProfileCard"
 function App() {
   
   function releaseMe() {
-    throw new Error('this is a trggered error');
+    throw new Error('this is a trggered error1');
   };
 
   // const fetch = async () => {
