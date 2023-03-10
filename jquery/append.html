@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+	<script src="/usr/src/app/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id='firstDiv'>Insert Below</div>
+
+    <div id='secondDiv'>Insert Above</div>
+    <script>
+      $('<p>Paragraph 1</p>').insertAfter('#firstDiv')
+
+      for (let i = 2; i <= 5; i++) {
+        $('<p>Paragraph ' + i + ' </p>').insertBefore('#secondDiv')
+      }
+      
+      console.log($('p').length);
+      // 5
+      console.log($('#firstDiv').next().text());
+      // Paragraph 1
+      console.log($('#secondDiv').prev().text());
+      // Paragraph 5
+    </script>
+  </body>
+</html>

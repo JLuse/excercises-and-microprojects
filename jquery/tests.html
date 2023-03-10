@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <script src="/usr/src/app/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <input type="text" value="Hello world" />
+    <textarea></textarea>
+    <script>
+      var initialValue = $('input').val()
+      $('textarea').val(initialValue)
+      
+      
+      
+      console.log(initialValue);
+      // Hello world
+      console.log($('textarea').val());
+      // Hello world
+    </script>
+  </body>
+</html>
