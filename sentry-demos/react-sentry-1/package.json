@@ -3,6 +3,7 @@
   "version": "0.0.2",
   "private": true,
   "dependencies": {
+    "@sentry/browser": "^7.41.0",
     "@sentry/react": "^7.31.1",
     "@sentry/tracing": "^7.31.1",
     "@testing-library/jest-dom": "^5.16.5",

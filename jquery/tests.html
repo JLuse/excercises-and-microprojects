@@ -7,18 +7,22 @@
     <script src="/usr/src/app/jquery-3.3.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
   </head>
+  
   <body>
-    <input type="text" value="Hello world" />
-    <textarea></textarea>
+    <div class="grandparent">
+      <div class="parent">
+        <div class="child">
+          <p class="grandchild"></p>
+        </div>
+      </div>
+      <div class="godParent1"></div>
+      <div class="godParent2"></div>
+    </div>
+
     <script>
       var initialValue = $('input').val()
-      $('textarea').val(initialValue)
+      console.log($("div.grandparent").children("div"))
       
-      
-      
-      console.log(initialValue);
-      // Hello world
-      console.log($('textarea').val());
       // Hello world
     </script>
   </body>
