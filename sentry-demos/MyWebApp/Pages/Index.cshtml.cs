@@ -14,8 +14,52 @@ public class IndexModel : PageModel
         _logger = logger;
     }
 
-    public void OnGet()
-    {
-        SentrySdk.CaptureMessage("Hello Sentry");
+    public void OnGet() {
+
+        // try
+        // {
+        //     throw new Exception("test");
+        //     }
+        //     catch (Exception e)
+        //     {
+        //     SentrySdk.CaptureException(e);
+        //     }
+
+        // try
+        //     {
+        //     throw new Exception("breadcrumb test");
+        //     }
+        //     catch (Exception e)
+        //     {
+        //     SentrySdk.ConfigureScope(scope =>
+        //     {
+        //     scope.AddBreadcrumb("test message");
+        //     });
+        //     SentrySdk.CaptureException(e);
+        //     }
+
+        // try
+        // {
+        // throw new Exception("test");
+        // }
+        // catch (Exception e)
+        // {
+       try
+        {
+        throw new Exception("test");
+        }
+        catch (Exception e)
+        {
+        SentrySdk.CaptureException(e, scope =>
+        {
+        scope.AddBreadcrumb("test message");
+        });
+        }
+        // }
+
+        // {
+        //     SentrySdk.CaptureMessage("Hello Sentry");
+        // }
     }
 }
+
