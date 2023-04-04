@@ -18,4 +18,9 @@ Sentry.init({
   autoSessionTracking: true,
   attachStacktrace: true,
   // debug: true,
+  beforeSend(event) {
+    // Modify or drop the event here
+    console.log(event)
+    return event;
+  },
 });
