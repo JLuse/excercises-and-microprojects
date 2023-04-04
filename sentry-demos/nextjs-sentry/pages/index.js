@@ -53,7 +53,7 @@ function Home() {
                 throw new Error("Sentry Frontend Error");
               }}
             >
-              Throw error
+              Throw error Again
           </button>
 
         </div>

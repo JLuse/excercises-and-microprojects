@@ -17,10 +17,9 @@ Sentry.init({
   environment: 'dev',
   autoSessionTracking: true,
   attachStacktrace: true,
-  // debug: true,
   beforeSend(event) {
     // Modify or drop the event here
-    console.log(event)
+    console.log('In beforeSend: ' + event)
     return event;
   },
 });
