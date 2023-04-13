@@ -5,7 +5,7 @@ import { BrowserTracing } from "@sentry/tracing";
 import App from './App';
 
 Sentry.init({
-  dsn: "https://4256b8867cf246209f998caa1596e807@o565143.ingest.sentry.io/4504765299752960",
+  dsn: "https://cf9d3f1ead944de2b8fdc37c1746d4af@o982579.ingest.sentry.io/4504962955214848",
   integrations: [new BrowserTracing()],
   enviroment: 'prod',
   // release: 'react-sentry@0.0.6',
