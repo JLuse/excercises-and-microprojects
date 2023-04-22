@@ -21,6 +21,7 @@ Sentry.init({
   // sessions when an error occurs.
   replaysOnErrorSampleRate: 1.0,
 
+  
   integrations: [
     new Sentry.Replay({
       // Additional SDK configuration goes in here, for example:
