@@ -19,7 +19,7 @@ Sentry.init({
   attachStacktrace: true,
   beforeSend(event) {
     // Modify or drop the event here
-    // console.log('In beforeSend: ' + event)
+    console.log(event.request.headers['User-Agent'])
     return event;
   },
 });
