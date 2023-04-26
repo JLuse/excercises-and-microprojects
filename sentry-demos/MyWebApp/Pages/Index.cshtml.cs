@@ -16,50 +16,29 @@ public class IndexModel : PageModel
 
     public void OnGet() {
 
-        // try
-        // {
-        //     throw new Exception("test");
-        //     }
-        //     catch (Exception e)
-        //     {
-        //     SentrySdk.CaptureException(e);
-        //     }
-
-        // try
-        //     {
-        //     throw new Exception("breadcrumb test");
-        //     }
-        //     catch (Exception e)
-        //     {
-        //     SentrySdk.ConfigureScope(scope =>
-        //     {
-        //     scope.AddBreadcrumb("test message");
-        //     });
-        //     SentrySdk.CaptureException(e);
-        //     }
-
-        // try
-        // {
-        // throw new Exception("test");
-        // }
-        // catch (Exception e)
-        // {
+        // local - at the time there is no HTTP context, b/c not on scope
+        // make Github issue for Matt
        try
         {
-        throw new Exception("test");
+        throw new Exception("WITH LOCAL SCOPE PART2");
         }
         catch (Exception e)
         {
         SentrySdk.CaptureException(e, scope =>
         {
-        scope.AddBreadcrumb("test message");
+        scope.AddBreadcrumb("Breadcrumb test message");
         });
         }
-        // }
 
-        // {
-        //     SentrySdk.CaptureMessage("Hello Sentry");
-        // }
+        try
+        {
+        throw new Exception("Global Test no SCOPE PART2");
+        }
+        catch (Exception e)
+        {
+        SentrySdk.CaptureException(e);
+        }
+
     }
 }
 
