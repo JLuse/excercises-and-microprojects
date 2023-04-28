@@ -1,6 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.WebHost.UseSentry();
+builder.WebHost.tus;
+
 
 // Add services to the container.
 builder.Services.AddRazorPages();

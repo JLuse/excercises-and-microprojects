@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "TR14igInOUCOBjV3RcWl1X7Ck4YWsHMdzXdG1fXyIeyUt9dcStj25y7JcIVpE6zUCNgSvsSkUfw8ECslS3UzMA==",
+  "dgSpecHash": "Iq6YuxmtRMDWVzIzHDuQlKb5cFjLclAlZfA3KztKID/sKNoVpO1mbAvRd73LQKbCQtU/8nHN9pkarQJzWAv2kg==",
   "success": true,
   "projectFilePath": "/Users/jordanluse/Desktop/projects/excercises-and-microprojects/sentry-demos/MyWebApp/MyWebApp.csproj",
   "expectedPackageFiles": [
@@ -16,9 +16,9 @@
     "/Users/jordanluse/.nuget/packages/microsoft.extensions.options/6.0.0/microsoft.extensions.options.6.0.0.nupkg.sha512",
     "/Users/jordanluse/.nuget/packages/microsoft.extensions.options.configurationextensions/6.0.0/microsoft.extensions.options.configurationextensions.6.0.0.nupkg.sha512",
     "/Users/jordanluse/.nuget/packages/microsoft.extensions.primitives/6.0.0/microsoft.extensions.primitives.6.0.0.nupkg.sha512",
-    "/Users/jordanluse/.nuget/packages/sentry/3.25.0/sentry.3.25.0.nupkg.sha512",
-    "/Users/jordanluse/.nuget/packages/sentry.aspnetcore/3.25.0/sentry.aspnetcore.3.25.0.nupkg.sha512",
-    "/Users/jordanluse/.nuget/packages/sentry.extensions.logging/3.25.0/sentry.extensions.logging.3.25.0.nupkg.sha512",
+    "/Users/jordanluse/.nuget/packages/sentry/3.30.0/sentry.3.30.0.nupkg.sha512",
+    "/Users/jordanluse/.nuget/packages/sentry.aspnetcore/3.30.0/sentry.aspnetcore.3.30.0.nupkg.sha512",
+    "/Users/jordanluse/.nuget/packages/sentry.extensions.logging/3.30.0/sentry.extensions.logging.3.30.0.nupkg.sha512",
     "/Users/jordanluse/.nuget/packages/system.diagnostics.diagnosticsource/6.0.0/system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "/Users/jordanluse/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],

@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v7.0": {
       "MyWebApp/1.0.0": {
         "dependencies": {
-          "Sentry.AspNetCore": "3.25.0"
+          "Sentry.AspNetCore": "3.30.0"
         },
         "runtime": {
           "MyWebApp.dll": {}
@@ -87,35 +87,35 @@
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         }
       },
-      "Sentry/3.25.0": {
+      "Sentry/3.30.0": {
         "runtime": {
           "lib/net6.0/Sentry.dll": {
-            "assemblyVersion": "3.25.0.0",
-            "fileVersion": "3.25.0.0"
+            "assemblyVersion": "3.30.0.0",
+            "fileVersion": "3.30.0.0"
           }
         }
       },
-      "Sentry.AspNetCore/3.25.0": {
+      "Sentry.AspNetCore/3.30.0": {
         "dependencies": {
-          "Sentry.Extensions.Logging": "3.25.0"
+          "Sentry.Extensions.Logging": "3.30.0"
         },
         "runtime": {
           "lib/net6.0/Sentry.AspNetCore.dll": {
-            "assemblyVersion": "3.25.0.0",
-            "fileVersion": "3.25.0.0"
+            "assemblyVersion": "3.30.0.0",
+            "fileVersion": "3.30.0.0"
           }
         }
       },
-      "Sentry.Extensions.Logging/3.25.0": {
+      "Sentry.Extensions.Logging/3.30.0": {
         "dependencies": {
           "Microsoft.Extensions.Http": "6.0.0",
           "Microsoft.Extensions.Logging.Configuration": "6.0.0",
-          "Sentry": "3.25.0"
+          "Sentry": "3.30.0"
         },
         "runtime": {
           "lib/net6.0/Sentry.Extensions.Logging.dll": {
-            "assemblyVersion": "3.25.0.0",
-            "fileVersion": "3.25.0.0"
+            "assemblyVersion": "3.30.0.0",
+            "fileVersion": "3.30.0.0"
           }
         }
       },
@@ -217,26 +217,26 @@
       "path": "microsoft.extensions.primitives/6.0.0",
       "hashPath": "microsoft.extensions.primitives.6.0.0.nupkg.sha512"
     },
-    "Sentry/3.25.0": {
+    "Sentry/3.30.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-4AKIoRqWVdqEo9WOsqAuywiFzdASjfWLOpI929m63Dm5JLahKgD6F7aFrlk9q29SU1PA6OhBSi1xTB2pURmqDg==",
-      "path": "sentry/3.25.0",
-      "hashPath": "sentry.3.25.0.nupkg.sha512"
+      "sha512": "sha512-BfhnWf/NbMW+6RVrNZ8bH40YG6QSb01Dt50/BbPIb0W23Wya0tb8QSyX2990nU3DIqrhxqENajgBNDEo868CNw==",
+      "path": "sentry/3.30.0",
+      "hashPath": "sentry.3.30.0.nupkg.sha512"
     },
-    "Sentry.AspNetCore/3.25.0": {
+    "Sentry.AspNetCore/3.30.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-UIWylmrzaYgTCBO8gnCpG2rDrIWi5Hf7dmYZmxRg/0DX8TQEBvfo0y58wIyRMV56sMaQ/krkg7xekIlwEIndBA==",
-      "path": "sentry.aspnetcore/3.25.0",
-      "hashPath": "sentry.aspnetcore.3.25.0.nupkg.sha512"
+      "sha512": "sha512-EpXvQQ6UbOQkyOwL0TNjXBBO0sK+XRETf8Oq6EdtmXdQuTfaLC48kqSXk3pxugBCqIxU/kT7fXd12rPkFG9EMA==",
+      "path": "sentry.aspnetcore/3.30.0",
+      "hashPath": "sentry.aspnetcore.3.30.0.nupkg.sha512"
     },
-    "Sentry.Extensions.Logging/3.25.0": {
+    "Sentry.Extensions.Logging/3.30.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ivaXvLA6w4FQKwM6dSTtX2mepTyZ3n4Pe1FZ5AyDNr4HpqRXw/9qZlGymH/pV9gJDJj5OAdNK2LIfUKJkwnNOQ==",
-      "path": "sentry.extensions.logging/3.25.0",
-      "hashPath": "sentry.extensions.logging.3.25.0.nupkg.sha512"
+      "sha512": "sha512-tykAR21+TvzGT4/YnWB3HDKFQ0Vv+/9t//r/QDCyWN/9lzDseShXsK98Th66l/b4b1wOdYgDRfH3Dj0b6RikhQ==",
+      "path": "sentry.extensions.logging/3.30.0",
+      "hashPath": "sentry.extensions.logging.3.30.0.nupkg.sha512"
     },
     "System.Diagnostics.DiagnosticSource/6.0.0": {
       "type": "package",

@@ -15,12 +15,24 @@ public class IndexModel : PageModel
     }
 
     public void OnGet() {
+        // To test switch between where global scope is set:
+        // 1. Run only with local scope try/catch to .AddBreadcrumb
+        // 2. Run again, uncomment first try/catch to apply HTTP context to local scope test with breadcrumbs
+        // 3. Run once more, comment first try/catch, uncomment last try/catch, HTTP is no longer applied to local scope test with breadcrumbs
 
-        // local - at the time there is no HTTP context, b/c not on scope
-        // make Github issue for Matt
+        // 2. uncomment to have HTTP context applied to the scope
+        // try
+        // {
+        // throw new Exception("HTTP Applied to global scope");
+        // }
+        // catch (Exception e)
+        // {
+        // SentrySdk.CaptureException(e);
+        // }
+        // local scope with addBreadcrumb
        try
         {
-        throw new Exception("WITH LOCAL SCOPE PART2");
+        throw new Exception("WITH LOCAL SCOPE");
         }
         catch (Exception e)
         {
@@ -30,14 +42,19 @@ public class IndexModel : PageModel
         });
         }
 
-        try
-        {
-        throw new Exception("Global Test no SCOPE PART2");
-        }
-        catch (Exception e)
-        {
-        SentrySdk.CaptureException(e);
-        }
+        // 3. uncomment to test HTTP info after local scope is set.
+        // try
+        // {
+        // throw new Exception("Global Test no SCOPE PART2");
+        // }
+        // catch (Exception e)
+        // {
+        // SentrySdk.CaptureException(e);
+        // }
+
+                //  - at the time there is no HTTP context, b/c not on scope
+        // If you test by switching 
+        // make Github issue for Matt
 
     }
 }

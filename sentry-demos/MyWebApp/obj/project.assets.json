@@ -221,7 +221,7 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Sentry/3.25.0": {
+      "Sentry/3.30.0": {
         "type": "package",
         "compile": {
           "lib/net6.0/Sentry.dll": {
@@ -234,13 +234,13 @@
           }
         },
         "build": {
-          "buildTransitive/Sentry.props": {}
+          "buildTransitive/Sentry.targets": {}
         }
       },
-      "Sentry.AspNetCore/3.25.0": {
+      "Sentry.AspNetCore/3.30.0": {
         "type": "package",
         "dependencies": {
-          "Sentry.Extensions.Logging": "3.25.0"
+          "Sentry.Extensions.Logging": "3.30.0"
         },
         "compile": {
           "lib/net6.0/Sentry.AspNetCore.dll": {
@@ -256,12 +256,12 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Sentry.Extensions.Logging/3.25.0": {
+      "Sentry.Extensions.Logging/3.30.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Http": "6.0.0",
           "Microsoft.Extensions.Logging.Configuration": "6.0.0",
-          "Sentry": "3.25.0"
+          "Sentry": "3.30.0"
         },
         "compile": {
           "lib/net6.0/Sentry.Extensions.Logging.dll": {
@@ -595,16 +595,17 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Sentry/3.25.0": {
-      "sha512": "4AKIoRqWVdqEo9WOsqAuywiFzdASjfWLOpI929m63Dm5JLahKgD6F7aFrlk9q29SU1PA6OhBSi1xTB2pURmqDg==",
+    "Sentry/3.30.0": {
+      "sha512": "BfhnWf/NbMW+6RVrNZ8bH40YG6QSb01Dt50/BbPIb0W23Wya0tb8QSyX2990nU3DIqrhxqENajgBNDEo868CNw==",
       "type": "package",
-      "path": "sentry/3.25.0",
+      "path": "sentry/3.30.0",
+      "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "build/Sentry.props",
-        "buildTransitive/Sentry.props",
+        "build/Sentry.targets",
+        "buildTransitive/Sentry.targets",
         "lib/net461/Sentry.dll",
         "lib/net461/Sentry.xml",
         "lib/net5.0/Sentry.dll",
@@ -624,14 +625,21 @@
         "lib/netstandard2.1/Sentry.dll",
         "lib/netstandard2.1/Sentry.xml",
         "sentry-nuget.png",
-        "sentry.3.25.0.nupkg.sha512",
-        "sentry.nuspec"
+        "sentry.3.30.0.nupkg.sha512",
+        "sentry.nuspec",
+        "tools/sentry-cli-Darwin-arm64",
+        "tools/sentry-cli-Darwin-x86_64",
+        "tools/sentry-cli-Linux-aarch64",
+        "tools/sentry-cli-Linux-i686",
+        "tools/sentry-cli-Linux-x86_64",
+        "tools/sentry-cli-Windows-i686.exe",
+        "tools/sentry-cli-Windows-x86_64.exe"
       ]
     },
-    "Sentry.AspNetCore/3.25.0": {
-      "sha512": "UIWylmrzaYgTCBO8gnCpG2rDrIWi5Hf7dmYZmxRg/0DX8TQEBvfo0y58wIyRMV56sMaQ/krkg7xekIlwEIndBA==",
+    "Sentry.AspNetCore/3.30.0": {
+      "sha512": "EpXvQQ6UbOQkyOwL0TNjXBBO0sK+XRETf8Oq6EdtmXdQuTfaLC48kqSXk3pxugBCqIxU/kT7fXd12rPkFG9EMA==",
       "type": "package",
-      "path": "sentry.aspnetcore/3.25.0",
+      "path": "sentry.aspnetcore/3.30.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -645,14 +653,14 @@
         "lib/netstandard2.0/Sentry.AspNetCore.dll",
         "lib/netstandard2.0/Sentry.AspNetCore.xml",
         "sentry-nuget.png",
-        "sentry.aspnetcore.3.25.0.nupkg.sha512",
+        "sentry.aspnetcore.3.30.0.nupkg.sha512",
         "sentry.aspnetcore.nuspec"
       ]
     },
-    "Sentry.Extensions.Logging/3.25.0": {
-      "sha512": "ivaXvLA6w4FQKwM6dSTtX2mepTyZ3n4Pe1FZ5AyDNr4HpqRXw/9qZlGymH/pV9gJDJj5OAdNK2LIfUKJkwnNOQ==",
+    "Sentry.Extensions.Logging/3.30.0": {
+      "sha512": "tykAR21+TvzGT4/YnWB3HDKFQ0Vv+/9t//r/QDCyWN/9lzDseShXsK98Th66l/b4b1wOdYgDRfH3Dj0b6RikhQ==",
       "type": "package",
-      "path": "sentry.extensions.logging/3.25.0",
+      "path": "sentry.extensions.logging/3.30.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -666,7 +674,7 @@
         "lib/netstandard2.0/Sentry.Extensions.Logging.dll",
         "lib/netstandard2.0/Sentry.Extensions.Logging.xml",
         "sentry-nuget.png",
-        "sentry.extensions.logging.3.25.0.nupkg.sha512",
+        "sentry.extensions.logging.3.30.0.nupkg.sha512",
         "sentry.extensions.logging.nuspec"
       ]
     },
@@ -723,7 +731,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "Sentry.AspNetCore >= 3.25.0"
+      "Sentry.AspNetCore >= 3.30.0"
     ]
   },
   "packageFolders": {
@@ -765,7 +773,7 @@
         "dependencies": {
           "Sentry.AspNetCore": {
             "target": "Package",
-            "version": "[3.25.0, )"
+            "version": "[3.30.0, )"
           }
         },
         "imports": [
