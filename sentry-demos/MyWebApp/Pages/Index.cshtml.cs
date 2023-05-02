@@ -15,12 +15,6 @@ public class IndexModel : PageModel
     }
 
     public void OnGet() {
-        // To test switch between where global scope is set:
-        // 1. Run only with local scope try/catch to .AddBreadcrumb
-        // 2. Run again, uncomment first try/catch to apply HTTP context to local scope test with breadcrumbs
-        // 3. Run once more, comment first try/catch, uncomment last try/catch, HTTP is no longer applied to local scope test with breadcrumbs
-
-        // 2. uncomment to have HTTP context applied to the scope
         // try
         // {
         // throw new Exception("HTTP Applied to global scope");
@@ -32,7 +26,7 @@ public class IndexModel : PageModel
         // local scope with addBreadcrumb
        try
         {
-        throw new Exception("WITH LOCAL SCOPE");
+        throw new Exception("WITH LOCAL SCOPE FIX");
         }
         catch (Exception e)
         {

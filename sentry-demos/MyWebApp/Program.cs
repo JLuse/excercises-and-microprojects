@@ -1,6 +1,6 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.WebHost.tus;
+builder.WebHost.UseSentry();
 
 
 // Add services to the container.
