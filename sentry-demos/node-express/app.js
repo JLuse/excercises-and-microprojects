@@ -47,6 +47,13 @@ Sentry.init({
   profilesSampleRate: 1.0,
 
   debug: true,
+  beforeSend: (event) => {
+    // if (event?.response?.status === '[0]') {
+    // return null;
+    // }
+    console.log(event)
+    return event;
+    },
 });
 
 // RequestHandler creates a separate execution context, so that all
@@ -72,6 +79,17 @@ app.use(function onError(err, req, res, next) {
   // and optionally displayed to the user for support.
   res.statusCode = 500;
   res.end(res.sentry + "\n");
+});
+
+app.get('/error400', (req, res) => {
+  // res.status(400).json({ error: 'Bad Request' });
+  try {
+    // Simulate an error with a 400 status
+    throw new Error('Bad Request');
+  } catch (error) {
+    // Capture the error and send it to Sentry
+    Sentry.captureException(error);
+  }
 });
 
 
