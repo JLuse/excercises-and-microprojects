@@ -61,11 +61,12 @@ app.use(Sentry.Handlers.tracingHandler());
 app.get('/', (req, res) => {
     res.send('Express + TypeScript Server');
 });
-// The error handler must be before any other error middleware and after all controllers
-app.use(Sentry.Handlers.errorHandler());
 app.get("/debug", (req, res) => {
     throw new Error("My first Sentry error!");
 });
+// The error handler must be before any other error middleware and after all controllers
+app.use(Sentry.Handlers.errorHandler());
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
+//# sourceMappingURL=index.js.map
