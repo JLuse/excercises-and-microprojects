@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>PokeCart</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/application.js"></script>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="cointainer">
+
+      <header>
+        <h1>PokeCart: Shopping cart for rare pokemon cards</h1>
+      </header>
+
+      <section>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Pokemon</th>
+              <th>Card Type</th>
+              <th>Asking Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Charzard</td>
+              <td>1st Edition Holo</td>
+              <td>$420,000</td>
+              <td>1</td>
+              <td>$420,000</td>
+              <td>
+                <button class="btn btn-danger btn-sm">Remove</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Blastoise</td>
+              <td>Galaxy Star Holo</td>
+              <td>$360,000</td>
+              <td>1</td>
+              <td>$360,000</td>
+              <td>
+                <button class="btn btn-danger btn-sm">Remove</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Venusaur</td>
+              <td>Japanese Base Set Holo</td>
+              <td>$55,000</td>
+              <td>2</td>
+              <td>$110,000</td>
+              <td>
+                <button class="btn btn-danger btn-sm">Remove</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <form class="col-12 mt-2 mb-4" id="addCard">
+          <input class="mx-2" name="pokemon" type="text" placeholder="Pokemon" required/>
+          <input class="mx-2" name="type" type="text" placeholder="Card Type"/>
+          <input class="mx-2" name="quantity" type="number" placeholder="Quantity"/>
+          <input class="mx-2" name="bidPrice" type="number" placeholder="Biding Price"/>
+          <button class="btn btn-primary btn-sm">add</button>
+        </form>
+        <!-- <div class="text-end">
+          <button class="btn btn-primary">Checkout</button>
+        </div> -->
+          <tfoot>
+            <tr>
+              <td colspan="3" class="text-end"><strong>Total:</strong></td>
+              <td colspan="2">$35.00</td>
+            </tr>
+          </tfoot>
+      </section>
+
+       <footer>
+       </footer>
+    </div>
+
+  </body>
+</html>
