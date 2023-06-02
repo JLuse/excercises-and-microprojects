@@ -85,10 +85,26 @@ app.get('/error400', (req, res) => {
   // res.status(400).json({ error: 'Bad Request' });
   try {
     // Simulate an error with a 400 status
-    throw new Error('Bad Request');
+    // throw new Error('Bad Request');
+    const requestBody = req.body; // Access the request body
+    throw new Error(`Bad Request: ${JSON.stringify(requestBody)}`);
   } catch (error) {
     // Capture the error and send it to Sentry
     Sentry.captureException(error);
+  }
+});
+
+app.post('/trigger-error', (req, res) => {
+  try {
+    // Simulate an error with request body information
+    const requestBody = req.body;
+    throw new Error(`Error occurred: ${JSON.stringify(requestBody)}`);
+  } catch (error) {
+    // Capture the error and send it to Sentry
+    Sentry.captureException(error);
+
+    // Respond with an error message
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
