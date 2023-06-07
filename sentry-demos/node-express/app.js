@@ -47,13 +47,16 @@ Sentry.init({
   profilesSampleRate: 1.0,
 
   debug: true,
-  beforeSend: (event) => {
-    // if (event?.response?.status === '[0]') {
-    // return null;
-    // }
-    console.log(event)
-    return event;
-    },
+  // beforeSend: (event) => {
+  //   // if (event?.response?.status === '[0]') {
+  //   // return null;
+  //   // }
+  //   console.log(event)
+  //   return event;
+  //   },
+  tracesSampler: samplingContext => {
+    console.log(samplingContext.request.headers['user-agent'])
+   }
 });
 
 // RequestHandler creates a separate execution context, so that all
@@ -63,7 +66,7 @@ app.use(Sentry.Handlers.requestHandler());
 app.use(Sentry.Handlers.tracingHandler());
 
 app.all('/', (req, res) => {
-    console.log("Just got a request!")
+    // console.log("Just got a request!")
     res.send('Yo!')
 })
 
