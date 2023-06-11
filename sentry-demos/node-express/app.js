@@ -54,9 +54,24 @@ Sentry.init({
   //   console.log(event)
   //   return event;
   //   },
-  tracesSampler: samplingContext => {
-    console.log(samplingContext.request.headers['user-agent'])
-   }
+  // tracesSampler: samplingContext => {
+  //   console.log(samplingContext.request.headers['user-agent'])
+  //  }
+  tracesSampler: (samplingContext) => {
+    const headers = samplingContext?.request?.headers
+    const userAgent = headers ? headers['user-agent'] : null
+     if (userAgent && userAgent.indexOf('Mozilla') !== -1) {
+      console.log('Should be filtered')
+    }
+    // if (samplingContext.request) {
+    // const headers = samplingContext?.request?.headers
+    // const userAgent = headers ? headers['user-agent'] : null
+    // // if (userAgent && userAgent.indexOf('ELB-') !== -1) {
+    // // return 0
+    // // }
+    // // }
+    // // return app.get('sentry')['tracesSampleRate']
+    },
 });
 
 // RequestHandler creates a separate execution context, so that all
