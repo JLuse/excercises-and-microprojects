@@ -1,9 +1,21 @@
-Rails.application.routes.draw do
-  root "sentry#index"
+require 'sidekiq/web'
 
-  get "/sentry", to: "sentry#index"
+Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  mount Sidekiq::Web => "/sidekiq"
+
+  get "health/liveness"
+
+  post "health/trigger_sentry"
+
+  # route where any visitor require the helloWorldJob to be triggered
+  post "health/trigger_job"
+
+  # where visitor are redirected once job has been called
+  get "other/job_done"
+
+  root to: "health#liveness"
 
   # Defines the root path route ("/")
-  # root "art#index"
+  # root "articles#index"
 end
