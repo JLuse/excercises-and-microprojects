@@ -17,9 +17,10 @@ Sentry.init({
   environment: 'dev',
   autoSessionTracking: true,
   attachStacktrace: true,
-  beforeSend(event) {
-    // Modify or drop the event here
-    console.log(event.request.headers['User-Agent'])
-    return event;
-  },
+  debug: true,
+  // beforeSend(event) {
+  //   // Modify or drop the event here
+  //   console.log(event.request.headers['User-Agent'])
+  //   return event;
+  // },
 });

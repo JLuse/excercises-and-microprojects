@@ -33,7 +33,9 @@ export default function Home() {
                     borderRadius: '12px',
                     border: 'none'
                 }} onClick={() => {
-                    throw new Error("Sentry Frontend Error");
+                    for (let i =0; i < 20; i++) {
+                        throw new Error("Dedupe - Sentry Frontend Error");
+                    }
                 }}>
                     Throw error
                 </button>

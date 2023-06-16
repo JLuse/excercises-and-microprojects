@@ -17,5 +17,5 @@ Sentry.init({
   environment: 'dev',
   autoSessionTracking: true,
   attachStacktrace: true,
-  // debug: true,
+  debug: true,
 });
