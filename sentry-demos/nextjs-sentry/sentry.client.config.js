@@ -10,17 +10,24 @@ Sentry.init({
   dsn: SENTRY_DSN || 'https://875b162b0be648eaa85db613009c1a1a@o565143.ingest.sentry.io/4504087486922752',
   // Adjust this value in production, or use tracesSampler for greater control
   tracesSampleRate: 1.0,
-  // ...
-  // Note: if you want to override the automatic release value, do not set a
-  // `release` value here - use the environment variable `SENTRY_RELEASE`, so
-  // that it will also get attached to your source maps
+  
   environment: 'dev',
   autoSessionTracking: true,
   attachStacktrace: true,
   debug: true,
-  // beforeSend(event) {
-  //   // Modify or drop the event here
-  //   console.log(event.request.headers['User-Agent'])
-  //   return event;
-  // },
+
+  replaysSessionSampleRate: 0.1,
+  replaysOnErrorSampleRate: 1.0,
+
+  networkDetailAllowUrls: [],
+  networkRequestHeaders: ['X-Custom-Header'],
+  networkResponseHeaders: ['X-Custom-Header'],
+
+  integrations: [
+    new Sentry.Replay({
+      // Additional SDK configuration goes in here, for example:
+      maskAllText: true,
+      blockAllMedia: true,
+    }),
+  ],
 });

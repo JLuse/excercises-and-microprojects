@@ -1,7 +1,22 @@
 import Head from 'next/head'
 import * as Sentry from "@sentry/react";
+import { fetchData } from '../pages/api/api.js';
 
 function Home() {
+
+  // const [data, setData] = useState(null);
+  const handleClick = () => {
+    Sentry.setUser({ email: "joe.rogain@experience.com" });
+    fetchData()
+      .then(responseData => {
+        console.log(responseData)
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+
+
   return (
     <div className="container">
       <Head>
@@ -50,13 +65,18 @@ function Home() {
             <button
               type="button"
               onClick={() => {
+                Sentry.setUser({ email: "joe.roganzz@experience.com" });
                 for (let i = 0; i < 20; i++) {
-                  throw new Error("Dedupe - Sentry Frontend Error");
+                  throw new Error("Test Sentry Frontend Error4");
                 }
               }}
             >
               Throw error Again
           </button>
+
+          <div>
+            <button onClick={handleClick}>Fetch fake Data</button>
+          </div>
 
         </div>
 
