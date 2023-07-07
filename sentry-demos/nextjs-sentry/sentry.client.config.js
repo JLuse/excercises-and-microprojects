@@ -15,13 +15,10 @@ Sentry.init({
   autoSessionTracking: true,
   attachStacktrace: true,
   debug: true,
+  release: 'somerelease@12345',
 
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
-
-  networkDetailAllowUrls: [],
-  networkRequestHeaders: ['X-Custom-Header'],
-  networkResponseHeaders: ['X-Custom-Header'],
 
   integrations: [
     new Sentry.Replay({
@@ -30,4 +27,6 @@ Sentry.init({
       blockAllMedia: true,
     }),
   ],
+
+
 });

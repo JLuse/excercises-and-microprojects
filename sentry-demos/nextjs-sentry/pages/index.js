@@ -5,16 +5,16 @@ import { fetchData } from '../pages/api/api.js';
 function Home() {
 
   // const [data, setData] = useState(null);
-  const handleClick = () => {
-    Sentry.setUser({ email: "joe.rogain@experience.com" });
-    fetchData()
-      .then(responseData => {
-        console.log(responseData)
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  };
+  // const handleClick = () => {
+  //   Sentry.setUser({ email: "joe.shmoe@experience.com" });
+  //   fetchData()
+  //     .then(responseData => {
+  //       console.log(responseData)
+  //     })
+  //     .catch(error => {
+  //       console.error(error);
+  //     });
+  // };
 
 
   return (
@@ -65,18 +65,30 @@ function Home() {
             <button
               type="button"
               onClick={() => {
-                Sentry.setUser({ email: "joe.roganzz@experience.com" });
+                Sentry.setUser({ id: 67890 })
+                // Sentry.setUser({ email: "joe.roganzz@experience.com" });
                 for (let i = 0; i < 20; i++) {
-                  throw new Error("Test Sentry Frontend Error4");
+                  throw new Error("Test Sentry Frontend Error");
+                }
+              }}
+            >
+              Throw error Again
+          </button>
+          <button
+              type="button"
+              onClick={() => {
+                // Sentry.setUser({ email: "joe.roganzz@experience.com" });
+                for (let i = 0; i < 5; i++) {
+                  throw new Error("Test artifacts");
                 }
               }}
             >
               Throw error Again
           </button>
 
-          <div>
+          {/* <div>
             <button onClick={handleClick}>Fetch fake Data</button>
-          </div>
+          </div> */}
 
         </div>
 
