@@ -15,7 +15,7 @@ Sentry.init({
   autoSessionTracking: true,
   attachStacktrace: true,
   debug: true,
-  release: 'somerelease@12345',
+  // release: 'somerelease@12345',
 
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,

@@ -25,7 +25,7 @@ const sentryWebpackPluginOptions = {
   // recommended:
   //   release, url, org, project, authToken, configFile, stripPrefix,
   //   urlPrefix, include, ignore
-  release: 'somerelease@12345',
+  // release: 'somerelease@12345',
 
 
   silent: true, // Suppresses all logs
