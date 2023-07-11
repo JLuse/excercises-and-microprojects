@@ -77,13 +77,12 @@ function Home() {
           <button
               type="button"
               onClick={() => {
-                // Sentry.setUser({ email: "joe.roganzz@experience.com" });
-                for (let i = 0; i < 5; i++) {
-                  throw new Error("Test artifacts");
-                }
+                fetch('https://jsonplaceholder.typicode.com/todos/1')
+                .then(response => response.json())
+                .then(json => console.log(json))
               }}
             >
-              Throw error Again
+              Fetch
           </button>
 
           {/* <div>

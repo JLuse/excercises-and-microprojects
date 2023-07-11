@@ -28,5 +28,15 @@ Sentry.init({
     }),
   ],
 
+  beforeBreadcrumb(event , hint) {
+    // console.log('BREADCRUMB EVENT:')
+    // console.log(event)
+    if (event.data.url === 'https://jsonplaceholder.typicode.com/todos/1') {
+      console.log('Dropped')
+      return null
+    }
+    return event
+  },
+
 
 });
