@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Movie Finder</title>
+    <style>
+      ul {
+        list-style-type: none;
+      }
+
+      .movie-container {
+        margin: 25px 0 50px 25px
+      }
+    </style>
+  </head>
+  <body>
+
+    <form onsubmit="handleSubmit(e)">
+      <input id="movie-name" type="text">
+      <button type="submit">Get movies</button>
+    </form>
+    <ul id="movie-list"></ul>
+
+    <script src="./request.js"></script>
+  </body>
+</html>
