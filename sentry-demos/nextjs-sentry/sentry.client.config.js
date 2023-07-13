@@ -15,7 +15,7 @@ Sentry.init({
   autoSessionTracking: true,
   attachStacktrace: true,
   debug: true,
-  // release: 'somerelease@12345',
+  release: 'letsRelease@12345',
 
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
@@ -28,15 +28,15 @@ Sentry.init({
     }),
   ],
 
-  beforeBreadcrumb(event , hint) {
-    // console.log('BREADCRUMB EVENT:')
-    // console.log(event)
-    if (event.data.url === 'https://jsonplaceholder.typicode.com/todos/1') {
-      console.log('Dropped')
-      return null
-    }
-    return event
-  },
+  // beforeBreadcrumb(event , hint) {
+  //   // console.log('BREADCRUMB EVENT:')
+  //   // console.log(event)
+  //   if (event.data.url === 'https://jsonplaceholder.typicode.com/todos/3') {
+  //     console.log('Dropped')
+  //     return null
+  //   }
+  //   return event
+  // },
 
 
 });
