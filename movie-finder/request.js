@@ -1,9 +1,6 @@
-function handleSubmit(e) {
-  e.preventDefault()
-  getMovies()
-}
-
-function getMovies() {
+function getMovies(event) {
+  event.preventDefault();
+  
   var inputText = document.getElementById('movie-name').value
   var movieList = document.getElementById('movie-list')
 
@@ -15,6 +12,8 @@ function getMovies() {
         console.log(httpRequest.responseText);
         var movies = JSON.parse(httpRequest.responseText);
         console.log(movies.Search);
+        // clear list for each search
+        movieList.innerHTML = ''
 
         movies.Search.forEach(function(movie) {
           var li = document.createElement('li')
