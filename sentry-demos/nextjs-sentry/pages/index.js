@@ -59,6 +59,7 @@ function Home() {
             <h3>Deploy &rarr;</h3>
             <p>
               Instantly deploy your Next.js site to a public URL with Vercel.
+              This is a test
             </p>
           </a>
           {/* Sentry Test */}
@@ -77,13 +78,14 @@ function Home() {
           <button
               type="button"
               onClick={() => {
-                fetch('https://jsonplaceholder.typicode.com/todos/1')
+                fetch('https://jsonplaceholder.typicode.com/todos/3')
                 .then(response => response.json())
                 .then(json => console.log(json))
               }}
             >
               Fetch
           </button>
+
 
           {/* <div>
             <button onClick={handleClick}>Fetch fake Data</button>
