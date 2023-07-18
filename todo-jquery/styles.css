@@ -4,3 +4,11 @@ Use Booptstrap
 Try and use text that looks like hand writing
 Delete and edit buttons remain invisble unless the todo is hovered over
 */
+
+ul {
+  list-style-type: none;
+}
+
+h1 {
+  color: blue;
+}

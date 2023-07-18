@@ -5,8 +5,44 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Todo List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
   
+  <div class="container mt-4">
+
+    <div class="row text-center">
+      <div class="col-xs-12">
+        <h1>Daily Goals</h1>
+      </div>
+    </div>
+
+    <ul class="container text-center goal-list">
+      <li class="row">
+        <form onsubmit="addGoal(event)">
+          <input type="text" name="add-goal" id="addGoal" placeholder="Enter a goal for today">
+          <button>Add</button>
+        </form>
+      </li>
+
+      <li class="row goal-item">
+        <div class="col-xs-1">
+          <input type="checkbox" id="completed" name="completed" checked>
+        </div>
+        <div class="col-xs-6">
+          <h2>Goal Item Description</h2>
+        </div>
+        <div class="col-xs-5">
+          <button>REMOVE</button>
+        </div>
+
+      </li> <!-- End of goal-item -->
+    </ul> <!-- End of goal-list -->
+
+  </div>
+
+   <script src="script.js"></script>
 </body>
 </html>
