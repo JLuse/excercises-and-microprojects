@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <ul class="container text-center goal-list">
+    <ul id="goalList" class="container text-center">
       <li class="row">
         <form onsubmit="addGoal(event)">
           <input type="text" name="add-goal" id="addGoal" placeholder="Enter a goal for today">
@@ -32,13 +32,13 @@
           <input type="checkbox" id="completed" name="completed" checked>
         </div>
         <div class="col-xs-6">
-          <h2>Goal Item Description</h2>
+          <h2 id="goalDescription">Goal Description</h2>
         </div>
         <div class="col-xs-5">
-          <button>REMOVE</button>
+          <button id="removeGoal">REMOVE</button>
         </div>
-
       </li> <!-- End of goal-item -->
+
     </ul> <!-- End of goal-list -->
 
   </div>

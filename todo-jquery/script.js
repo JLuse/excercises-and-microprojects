@@ -4,8 +4,7 @@
 // my user id - https://fewd-todolist-api.onrender.com/tasks?api_key=233
 
 let getGoals = function() {
-  var $goalList = $('#goalList')
-  // console.log($goalList)
+  var goalList = document.getElementById('goalList')
 
   $.ajax({
     type: 'GET',
@@ -18,7 +17,27 @@ let getGoals = function() {
         console.log('true')
         goals.forEach(function(goal) {
           var goalItem = document.createElement('li')
-          goal.className = 'row goal-item'
+          var completedContainer = document.createElement('div')
+          var completedCheckBox = document.createElement('input')
+          var goalDescriptionContainer = document.createElement('div')
+          var goalDescription = document.createElement('h2')
+          var removeGoalContainer = document.createElement('div')
+          var removeGoalButton = document.createElement('button')
+
+          goalItem.className = 'row goal-item'
+          completedContainer.className = 'col-xs-1'
+          completedCheckBox.id = 'completed'
+          completedCheckBox.type = 'checkbox'
+          completedCheckBox.name = 'completed'
+          completedCheckBox.checked = false
+          goalDescriptionContainer.className = 'col-xs-6'
+          goalDescription.id = 'goalDescription'
+          removeGoalContainer.className = 'col-xs-5'
+          removeGoalButton.id = 'removeGoal'
+          
+          
+
+
 
         })
       } else {
