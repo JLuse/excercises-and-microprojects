@@ -19,15 +19,22 @@
       </div>
     </div>
 
+    <div class="row text-center">
+      <form id="form">
+        <input type="text" name="add-goal" id="addGoal" placeholder="Enter a goal for today">
+        <button>Add</button>
+      </form>
+    </div>
+
     <ul id="goalList" class="container text-center">
-      <li class="row">
-        <form onsubmit="addGoal(event)">
+      <!-- <li class="row">
+        <form id="form">
           <input type="text" name="add-goal" id="addGoal" placeholder="Enter a goal for today">
           <button>Add</button>
         </form>
-      </li>
+      </li> -->
 
-      <li class="row goal-item">
+      <!-- <li class="row goal-item">
         <div class="col-xs-1">
           <input type="checkbox" id="completed" name="completed" checked>
         </div>
@@ -37,7 +44,7 @@
         <div class="col-xs-5">
           <button id="removeGoal">REMOVE</button>
         </div>
-      </li> <!-- End of goal-item -->
+      </li> End of goal-item -->
 
     </ul> <!-- End of goal-list -->
 
