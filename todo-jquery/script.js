@@ -4,6 +4,7 @@
 // my user id - https://fewd-todolist-api.onrender.com/tasks?api_key=233
 var goalList = document.getElementById('goalList')
 
+
 let getGoals = function() {
   goalList.innerHTML = ''
   $.ajax({
@@ -33,8 +34,11 @@ let getGoals = function() {
           goalDescriptionContainer.className = 'col-xs-6'
           goalDescription.id = 'goalDescription'
           removeGoalContainer.className = 'col-xs-5'
-          removeGoalButton.id = 'removeGoal'
-          removeGoalButton.setAttribute("data-id", goal.id);
+          removeGoalButton.className = 'remove-goal'
+          removeGoalButton.setAttribute("data-id", goal.id)
+          // for some reason i can only get this applying with jquery
+          $(removeGoalButton).attr("onClick", "removeGoal(event)");
+          // removeGoalButton.onclick = removeGoal
 
           completedCheckBox.checked = goal.completed
           goalDescription.textContent = goal.content
@@ -61,7 +65,7 @@ let getGoals = function() {
 }
 
 // Add goal
-let addGoal = function() {
+var addGoal = function() {
   $.ajax({
     type: 'POST',
     url: 'https://fewd-todolist-api.onrender.com/tasks?api_key=233',
@@ -84,12 +88,13 @@ let addGoal = function() {
 }
 
 // remove goal
-let removeGoal = function() {
+var removeGoal = function(event) {
   $.ajax({
     type: 'DELETE',
-     url: 'https://fewd-todolist-api.onrender.com/tasks/5?api_key=233',
+     url: `https://fewd-todolist-api.onrender.com/tasks/${event.target.dataset.id}?api_key=233`,
      success: function (response, textStatus) {
        console.log(response);
+       getGoals()
      },
      error: function (request, textStatus, errorMessage) {
        console.log(errorMessage);
