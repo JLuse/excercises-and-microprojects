@@ -75,6 +75,12 @@ function Home() {
             >
               Throw error Again
           </button>
+          {/* <button
+              type="button"
+              onClick={}
+            >
+              No Funct Error
+          </button> */}
           <button
               type="button"
               onClick={() => {

@@ -28,25 +28,25 @@ Sentry.init({
     }),
   ],
 
-  beforeBreadcrumb(event , hint) {
-    console.log('BREADCRUMB EVENT:')
-    console.log(event)
-    if (event.data.url === 'https://jsonplaceholder.typicode.com/todos/3') {
-      console.log('Dropped')
-      return null
-    }
-    return event
-  },
+//   beforeBreadcrumb(event , hint) {
+//     console.log('BREADCRUMB EVENT:')
+//     console.log(event)
+//     if (event.data.url === 'https://jsonplaceholder.typicode.com/todos/3') {
+//       console.log('Dropped')
+//       return null
+//     }
+//     return event
+//   },
 
 
 });
 
-function shouldIgnoreBreadcrumb(breadcrumb) {
-  const {data, level} = breadcrumb;
-  const url = data?.url
+// function shouldIgnoreBreadcrumb(breadcrumb) {
+//   const {data, level} = breadcrumb;
+//   const url = data?.url
 
-  return (
-    isErrorPluslevel(level) && url && IGNORED_URLS.some((urlRegex: RegexExp) => urlRegex.test(url ))
-  )
-}
+//   return (
+//     isErrorPluslevel(level) && url && IGNORED_URLS.some((urlRegex: RegexExp) => urlRegex.test(url ))
+//   )
+// }
 
