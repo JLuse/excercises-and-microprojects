@@ -3,10 +3,12 @@
 // create JS functions for each method/task (GET, POST, UPDATE, DELETE)
 // my user id - https://fewd-todolist-api.onrender.com/tasks?api_key=233
 var goalList = document.getElementById('goalList')
+var addGoalInput = document.getElementById('addGoal')
 
-
-let getGoals = function() {
+var getGoals = function() {
   goalList.innerHTML = ''
+  addGoalInput.value = ''
+  console.log(addGoalInput)
   $.ajax({
     type: 'GET',
     url: 'https://fewd-todolist-api.onrender.com/tasks?api_key=233',
@@ -27,18 +29,18 @@ let getGoals = function() {
           var removeGoalButton = document.createElement('button')
 
           goalItem.className = 'row goal-item'
+          goalItem.setAttribute('data-id', goal.id)
           completedContainer.className = 'col-xs-1'
           completedCheckBox.id = 'completed'
           completedCheckBox.type = 'checkbox'
           completedCheckBox.name = 'completed'
+          // for some reason I can only get this applying with jquery
+          $(completedCheckBox).attr('onChange', 'checkGoal(event)')
           goalDescriptionContainer.className = 'col-xs-6'
           goalDescription.id = 'goalDescription'
           removeGoalContainer.className = 'col-xs-5'
           removeGoalButton.className = 'remove-goal'
-          removeGoalButton.setAttribute("data-id", goal.id)
-          // for some reason i can only get this applying with jquery
-          $(removeGoalButton).attr("onClick", "removeGoal(event)");
-          // removeGoalButton.onclick = removeGoal
+          $(removeGoalButton).attr('onClick', 'removeGoal(event)');
 
           completedCheckBox.checked = goal.completed
           goalDescription.textContent = goal.content
@@ -73,7 +75,7 @@ var addGoal = function() {
     dataType: 'json',
     data: JSON.stringify({
       task: {
-        content: document.getElementById('addGoal').value
+        content: addGoalInput.value
       }
     }),
     success: function (response, textStatus) {
@@ -89,9 +91,10 @@ var addGoal = function() {
 
 // remove goal
 var removeGoal = function(event) {
+  // console.log(event.target.closest('li').dataset.id)
   $.ajax({
     type: 'DELETE',
-     url: `https://fewd-todolist-api.onrender.com/tasks/${event.target.dataset.id}?api_key=233`,
+     url: `https://fewd-todolist-api.onrender.com/tasks/${event.target.closest('li').dataset.id}?api_key=233`,
      success: function (response, textStatus) {
        console.log(response);
        getGoals()
@@ -102,6 +105,23 @@ var removeGoal = function(event) {
    });
 }
 
+// check box goal
+var checkGoal = function(event) {
+  $.ajax({
+    type: 'PUT',
+    url: event.target.checked ? 
+    `https://fewd-todolist-api.onrender.com/tasks/${event.target.closest('li').dataset.id}/mark_complete?api_key=233` : 
+    `https://fewd-todolist-api.onrender.com/tasks/${event.target.closest('li').dataset.id}/mark_active?api_key=233`,
+    contentType: 'application/json',
+    dataType: 'json',
+    success: function (response, textStatus) {
+      console.log(response);
+    },
+    error: function (request, textStatus, errorMessage) {
+      console.log(errorMessage);
+    }
+  });
+}
 
 $('#form').submit(function(event){
   event.preventDefault();
