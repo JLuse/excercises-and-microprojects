@@ -4,10 +4,49 @@
 // my user id - https://fewd-todolist-api.onrender.com/tasks?api_key=233
 var goalList = document.getElementById('goalList')
 var addGoalInput = document.getElementById('addGoal')
+var toggleCompletedTitle = document.getElementById('toggleCompleted')
+
+var generateGoals = function(task) {
+  var goalItem = document.createElement('li')
+  var completedContainer = document.createElement('div')
+  var completedCheckBox = document.createElement('input')
+  var goalDescriptionContainer = document.createElement('div')
+  var goalDescription = document.createElement('h2')
+  var removeGoalContainer = document.createElement('div')
+  var removeGoalButton = document.createElement('button')
+
+  goalItem.className = 'row goal-item'
+  $(goalItem).attr('data-id', task.id)
+  completedContainer.className = 'col-xs-1'
+  completedCheckBox.id = 'completed'
+  completedCheckBox.type = 'checkbox'
+  completedCheckBox.name = 'completed'
+  $(completedCheckBox).attr('onChange', 'checkGoal(event)')
+  goalDescriptionContainer.className = 'col-xs-6 text-left'
+  // goalDescription.id = 'goalDescription'
+  removeGoalContainer.className = 'col-xs-5'
+  removeGoalButton.className = 'remove-goal'
+  $(removeGoalButton).attr('onClick', 'removeGoal(event)');
+
+  completedCheckBox.checked = task.completed
+  goalDescription.textContent = task.content
+  removeGoalButton.textContent = 'Remove'
+  
+  goalList.appendChild(goalItem)
+  goalItem.appendChild(completedContainer)
+  goalItem.appendChild(goalDescriptionContainer)
+  goalItem.appendChild(removeGoalContainer)
+
+  completedContainer.appendChild(completedCheckBox)
+  goalDescriptionContainer.appendChild(goalDescription)
+  removeGoalContainer.appendChild(removeGoalButton)
+}
 
 var getGoals = function() {
   goalList.innerHTML = ''
   addGoalInput.value = ''
+  toggleCompletedTitle.innerHTML = 'All Goals'
+
   console.log(addGoalInput)
   $.ajax({
     type: 'GET',
@@ -20,40 +59,7 @@ var getGoals = function() {
         console.log('true')
         goals.forEach(function(goal) {
           // console.log(goal.id)
-          var goalItem = document.createElement('li')
-          var completedContainer = document.createElement('div')
-          var completedCheckBox = document.createElement('input')
-          var goalDescriptionContainer = document.createElement('div')
-          var goalDescription = document.createElement('h2')
-          var removeGoalContainer = document.createElement('div')
-          var removeGoalButton = document.createElement('button')
-
-          goalItem.className = 'row goal-item'
-          goalItem.setAttribute('data-id', goal.id)
-          completedContainer.className = 'col-xs-1'
-          completedCheckBox.id = 'completed'
-          completedCheckBox.type = 'checkbox'
-          completedCheckBox.name = 'completed'
-          // for some reason I can only get this applying with jquery
-          $(completedCheckBox).attr('onChange', 'checkGoal(event)')
-          goalDescriptionContainer.className = 'col-xs-6'
-          goalDescription.id = 'goalDescription'
-          removeGoalContainer.className = 'col-xs-5'
-          removeGoalButton.className = 'remove-goal'
-          $(removeGoalButton).attr('onClick', 'removeGoal(event)');
-
-          completedCheckBox.checked = goal.completed
-          goalDescription.textContent = goal.content
-          removeGoalButton.textContent = 'Remove'
-          
-          goalList.appendChild(goalItem)
-          goalItem.appendChild(completedContainer)
-          goalItem.appendChild(goalDescriptionContainer)
-          goalItem.appendChild(removeGoalContainer)
-
-          completedContainer.appendChild(completedCheckBox)
-          goalDescriptionContainer.appendChild(goalDescription)
-          removeGoalContainer.appendChild(removeGoalButton)
+          generateGoals(goal)
         })
       } else {
         console.log('false')
@@ -122,6 +128,71 @@ var checkGoal = function(event) {
     }
   });
 }
+
+let toggleState = 0;
+
+function toggleCompleted() {
+  const toggle = document.getElementById('toggleCompleted');
+  if (toggleState === 0) {
+    getCompletedGoals();
+    toggleState = 1;
+    toggle.innerText = 'Completed';
+  } else if (toggleState === 1) {
+    getActiveGoals();
+    toggleState = 2;
+    toggle.innerText = 'Active';
+  } else {
+    getGoals();
+    toggleState = 0;
+    toggle.innerText = 'All Goals';
+  }
+}
+
+function getCompletedGoals() {
+  goalList.innerHTML = ''
+  $.ajax({
+    type: 'GET',
+    url: 'https://fewd-todolist-api.onrender.com/tasks?api_key=233',
+    dataType: 'json',
+    success: function (response, textStatus) {
+      var allActiveTasks = response.tasks.filter(task => task.completed)
+      allActiveTasks.forEach(function(activeGoals) {
+        generateGoals(activeGoals)
+      })
+      // console.log(activeTasks)
+      // generateGoals(activeTasks)
+
+    },
+    error: function (request, textStatus, errorMessage) {
+      console.log(errorMessage);
+    }
+  });
+}
+
+function getActiveGoals() {
+  goalList.innerHTML = ''
+  $.ajax({
+    type: 'GET',
+    url: 'https://fewd-todolist-api.onrender.com/tasks?api_key=233',
+    dataType: 'json',
+    success: function (response, textStatus) {
+      var allActiveTasks = response.tasks.filter(task => !task.completed)
+      allActiveTasks.forEach(function(activeGoals) {
+        generateGoals(activeGoals)
+      })
+      // console.log(activeTasks)
+      // generateGoals(activeTasks)
+
+    },
+    error: function (request, textStatus, errorMessage) {
+      console.log(errorMessage);
+    }
+  });
+}
+
+// function function3() {
+//   console.log("Function 3 called!");
+// }
 
 $('#form').submit(function(event){
   event.preventDefault();
