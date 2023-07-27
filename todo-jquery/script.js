@@ -130,8 +130,7 @@ var checkGoal = function(event) {
 }
 
 let toggleState = 0;
-
-function toggleCompleted() {
+var toggleCompleted = function() {
   const toggle = document.getElementById('toggleCompleted');
   if (toggleState === 0) {
     getCompletedGoals();
@@ -148,7 +147,7 @@ function toggleCompleted() {
   }
 }
 
-function getCompletedGoals() {
+var getCompletedGoals = function() {
   goalList.innerHTML = ''
   $.ajax({
     type: 'GET',
@@ -169,7 +168,7 @@ function getCompletedGoals() {
   });
 }
 
-function getActiveGoals() {
+var getActiveGoals = function() {
   goalList.innerHTML = ''
   $.ajax({
     type: 'GET',
@@ -182,6 +181,35 @@ function getActiveGoals() {
       })
       // console.log(activeTasks)
       // generateGoals(activeTasks)
+
+    },
+    error: function (request, textStatus, errorMessage) {
+      console.log(errorMessage);
+    }
+  });
+}
+
+// not working like i think
+var sortId = function() {
+  goalList.innerHTML = ''
+  // var sorted = false;
+  $.ajax({
+    type: 'GET',
+    url: 'https://fewd-todolist-api.onrender.com/tasks?api_key=233',
+    dataType: 'json',
+    success: function (response, textStatus) {
+      // sorted = !sorted
+      // console.log(sorted)
+      // if (sorted) {
+      //   var allSortedTasks = response.tasks.sort((a, b) => a.id - b.id);
+      //   // console.log(allSortedTasks)
+      //   allSortedTasks.forEach(function(sortedTask) {
+      //     generateGoals(sortedTask)
+      //   })
+      // } else {
+      //   getGoals();
+      //   console.log(sorted)
+      // }
 
     },
     error: function (request, textStatus, errorMessage) {
