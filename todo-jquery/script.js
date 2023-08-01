@@ -190,33 +190,33 @@ var getActiveGoals = function() {
 }
 
 // not working like i think
-var sortId = function() {
-  goalList.innerHTML = ''
-  // var sorted = false;
-  $.ajax({
-    type: 'GET',
-    url: 'https://fewd-todolist-api.onrender.com/tasks?api_key=233',
-    dataType: 'json',
-    success: function (response, textStatus) {
-      // sorted = !sorted
-      // console.log(sorted)
-      // if (sorted) {
-      //   var allSortedTasks = response.tasks.sort((a, b) => a.id - b.id);
-      //   // console.log(allSortedTasks)
-      //   allSortedTasks.forEach(function(sortedTask) {
-      //     generateGoals(sortedTask)
-      //   })
-      // } else {
-      //   getGoals();
-      //   console.log(sorted)
-      // }
+// var sortId = function() {
+//   goalList.innerHTML = ''
+//   // var sorted = false;
+//   $.ajax({
+//     type: 'GET',
+//     url: 'https://fewd-todolist-api.onrender.com/tasks?api_key=233',
+//     dataType: 'json',
+//     success: function (response, textStatus) {
+//       // sorted = !sorted
+//       // console.log(sorted)
+//       // if (sorted) {
+//       //   var allSortedTasks = response.tasks.sort((a, b) => a.id - b.id);
+//       //   // console.log(allSortedTasks)
+//       //   allSortedTasks.forEach(function(sortedTask) {
+//       //     generateGoals(sortedTask)
+//       //   })
+//       // } else {
+//       //   getGoals();
+//       //   console.log(sorted)
+//       // }
 
-    },
-    error: function (request, textStatus, errorMessage) {
-      console.log(errorMessage);
-    }
-  });
-}
+//     },
+//     error: function (request, textStatus, errorMessage) {
+//       console.log(errorMessage);
+//     }
+//   });
+// }
 
 // function function3() {
 //   console.log("Function 3 called!");
