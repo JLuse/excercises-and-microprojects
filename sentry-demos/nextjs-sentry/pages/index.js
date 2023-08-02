@@ -66,21 +66,22 @@ function Home() {
             <button
               type="button"
               onClick={() => {
-                Sentry.setUser({ id: 67890 })
                 // Sentry.setUser({ email: "joe.roganzz@experience.com" });
                 for (let i = 0; i < 20; i++) {
-                  throw new Error("Test Sentry Frontend Error");
+                  throw new Error("Test Sentry Frontend Error20");
                 }
               }}
             >
               Throw error Again
           </button>
-          {/* <button
+          <button
               type="button"
-              onClick={}
+              onClick={() => {
+                throw new Error("Test Sentry Frontend Error21");
+              }}
             >
-              No Funct Error
-          </button> */}
+              New Funct Error
+          </button>
           <button
               type="button"
               onClick={() => {

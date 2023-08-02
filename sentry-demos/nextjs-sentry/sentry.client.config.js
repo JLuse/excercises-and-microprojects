@@ -23,30 +23,63 @@ Sentry.init({
   integrations: [
     new Sentry.Replay({
       // Additional SDK configuration goes in here, for example:
-      maskAllText: true,
+      // beforeAddRecordingEvent(event) {
+      //   console.log(event)
+      // },
+      maskAllText: false,
       blockAllMedia: true,
     }),
   ],
 
-//   beforeBreadcrumb(event , hint) {
-//     console.log('BREADCRUMB EVENT:')
-//     console.log(event)
-//     if (event.data.url === 'https://jsonplaceholder.typicode.com/todos/3') {
-//       console.log('Dropped')
-//       return null
-//     }
-//     return event
-//   },
+  beforeSend(event) {
+    const foundBreadCrumb = event.breadcrumbs.find(breadcrumb => {
+        if(breadcrumb.data !== undefined) {
+          if(breadcrumb.data.url === 'https://jsonplaceholder.typicode.com/todos/3') {
+            return true
+          }
+        }
+      })
+    return foundBreadCrumb ? null : event;
+  }
+      // console.log(foundBread)
 
+    // })
+    // console.log(event.breadcrumbs)
+    // const foundBreadcrumb = event.breadcrumbs.find(breadcrumb => {
+    //   breadcrumb.data !== undefined && breadcrumb.data.url === 'https://jsonplaceholder.typicode.com/todos/3'
+    // });
+    // return foundBread ? null : event;
+    
+    // return event.breadcrumbs.forEach(breadcrumb => breadcrumb.data !== undefined && breadcrumb.data.url === 'https://jsonplaceholder.typicode.com/todos/3' ? null : event)
+      //  breadcumb.data.url === 'https://jsonplaceholder.typicode.com/todos/3' ? console.log(breadcumb.data.url) : console.log('NOT IT'))
+    // event.breadcrumbs.forEach(breadcumb => console.log(breadcumb.data !== undefined ? breadcumb.data.url : 'MISSING DATA Object'))
+    // if (event.breadcrumbs.data === 'https://jsonplaceholder.typicode.com/todos/3') {
+    // }
+    
+  // }
 
 });
 
-// function shouldIgnoreBreadcrumb(breadcrumb) {
-//   const {data, level} = breadcrumb;
-//   const url = data?.url
-
-//   return (
-//     isErrorPluslevel(level) && url && IGNORED_URLS.some((urlRegex: RegexExp) => urlRegex.test(url ))
-//   )
-// }
-
+// [{category
+//   : 
+//   "fetch"
+//   data
+//   : 
+//   method
+//   : 
+//   "GET"
+//   status_code
+//   : 
+//   200
+//   url
+//   : 
+//   "https://jsonplaceholder.typicode.com/todos/3"
+//   [[Prototype]]
+//   : 
+//   Object
+//   timestamp
+//   : 
+//   1690928301.97
+//   type
+//   : 
+//   "http"}]
