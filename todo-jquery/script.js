@@ -1,7 +1,3 @@
-// GET Your todo list by default when the DOM is ready, no need for inout for your 
-// from there all methods and actions
-// create JS functions for each method/task (GET, POST, UPDATE, DELETE)
-// my user id - https://fewd-todolist-api.onrender.com/tasks?api_key=233
 var goalList = document.getElementById('goalList')
 var addGoalInput = document.getElementById('addGoal')
 var toggleCompletedTitle = document.getElementById('toggleCompleted')
@@ -23,7 +19,6 @@ var generateGoals = function(task) {
   completedCheckBox.name = 'completed'
   $(completedCheckBox).attr('onChange', 'checkGoal(event)')
   goalDescriptionContainer.className = 'col-xs-6 text-left'
-  // goalDescription.id = 'goalDescription'
   removeGoalContainer.className = 'col-xs-5'
   removeGoalButton.className = 'remove-goal'
   $(removeGoalButton).attr('onClick', 'removeGoal(event)');
@@ -54,17 +49,14 @@ var getGoals = function() {
     dataType: 'json',
     success: function (response, textStatus) {
       var goals = response.tasks
-      // console.log(goals);
       if (goals.length > 0) {
         console.log('true')
         goals.forEach(function(goal) {
-          // console.log(goal.id)
           generateGoals(goal)
         })
       } else {
         console.log('false')
       }
-      // response is a parsed JavaScript object instead of raw JSON
     },
     error: function (request, textStatus, errorMessage) {
       console.log(errorMessage);
@@ -95,9 +87,7 @@ var addGoal = function() {
   });
 }
 
-// remove goal
 var removeGoal = function(event) {
-  // console.log(event.target.closest('li').dataset.id)
   $.ajax({
     type: 'DELETE',
      url: `https://fewd-todolist-api.onrender.com/tasks/${event.target.closest('li').dataset.id}?api_key=233`,
@@ -158,9 +148,6 @@ var getCompletedGoals = function() {
       allActiveTasks.forEach(function(activeGoals) {
         generateGoals(activeGoals)
       })
-      // console.log(activeTasks)
-      // generateGoals(activeTasks)
-
     },
     error: function (request, textStatus, errorMessage) {
       console.log(errorMessage);
@@ -179,48 +166,12 @@ var getActiveGoals = function() {
       allActiveTasks.forEach(function(activeGoals) {
         generateGoals(activeGoals)
       })
-      // console.log(activeTasks)
-      // generateGoals(activeTasks)
-
     },
     error: function (request, textStatus, errorMessage) {
       console.log(errorMessage);
     }
   });
 }
-
-// not working like i think
-// var sortId = function() {
-//   goalList.innerHTML = ''
-//   // var sorted = false;
-//   $.ajax({
-//     type: 'GET',
-//     url: 'https://fewd-todolist-api.onrender.com/tasks?api_key=233',
-//     dataType: 'json',
-//     success: function (response, textStatus) {
-//       // sorted = !sorted
-//       // console.log(sorted)
-//       // if (sorted) {
-//       //   var allSortedTasks = response.tasks.sort((a, b) => a.id - b.id);
-//       //   // console.log(allSortedTasks)
-//       //   allSortedTasks.forEach(function(sortedTask) {
-//       //     generateGoals(sortedTask)
-//       //   })
-//       // } else {
-//       //   getGoals();
-//       //   console.log(sorted)
-//       // }
-
-//     },
-//     error: function (request, textStatus, errorMessage) {
-//       console.log(errorMessage);
-//     }
-//   });
-// }
-
-// function function3() {
-//   console.log("Function 3 called!");
-// }
 
 $('#form').submit(function(event){
   event.preventDefault();

@@ -11,62 +11,39 @@
 </head>
 <body>
   
-  <div class="container mt-4">
-
-    <div class="row text-center">
+  <div class="container text-center header">
+    <div class="row">
       <div class="col-xs-12">
         <h1>Daily Goals</h1>
       </div>
     </div>
 
-    <div class="row text-center">
+    <div class="row">
       <form id="form">
         <input type="text" name="add-goal" id="addGoal" placeholder="Enter a goal for today">
         <button>Add</button>
       </form>
     </div>
 
-    <!-- <div class="row text-center">
-      <div class="col-xs-2">
-        <label class="switch">
-          <input type="checkbox" onchange="sortId()">
-          <span class="slider round"></span>
-          <p>Sort by ID</p>
-        </label>
-        
-      </div> -->
-        
-      <!-- <button>Toggle</button> -->
-      <div class="col-xs-2" id="toggleGoals">
+    <div class="row toggle-container">
+      <div class="toggle-element" id="toggleGoals">
         <button id="toggleButton" onclick="toggleCompleted()">Toogle</button>
       </div>
-      <div class="col-xs-1">
-        <p id="toggleCompleted">All Goals</p>
+      <div id="goalStatusContainer" class="toggle-element">
+        <div id="toggleCompleted">All Goals</div>
       </div>
-
+    </div>
     </div>
 
-    <ul id="goalList" class="container text-center">
-      <!-- <li class="row">
-        <form id="form">
-          <input type="text" name="add-goal" id="addGoal" placeholder="Enter a goal for today">
-          <button>Add</button>
-        </form>
-      </li> -->
+    <div class="container text-center goals-container">
+      <div class="row goal-headers">
+        <div class="col-xs-1">Active</div>
+        <div class="col-xs-9">Description</div>
+      </div>
 
-      <!-- <li class="row goal-item">
-        <div class="col-xs-1">
-          <input type="checkbox" id="completed" name="completed">
-        </div>
-        <div class="col-xs-6">
-          <h2 id="goalDescription">Goal Description</h2>
-        </div>
-        <div class="col-xs-5">
-          <button id="removeGoal">REMOVE</button>
-        </div>
-      </li> End of goal-item -->
-
-    </ul> <!-- End of goal-list -->
+      <ul id="goalList">
+      </ul>
+    </div>
 
   </div>
 
