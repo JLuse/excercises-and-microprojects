@@ -13,7 +13,7 @@ var generateGoals = function(task) {
 
   goalItem.className = 'row goal-item'
   $(goalItem).attr('data-id', task.id)
-  completedContainer.className = 'col-xs-1'
+  completedContainer.className = 'col-xs-1 completed-container'
   completedCheckBox.id = 'completed'
   completedCheckBox.type = 'checkbox'
   completedCheckBox.name = 'completed'
