@@ -5,12 +5,17 @@ Try and use text that looks like hand writing
 Delete and edit buttons remain invisble unless the todo is hovered over
 */
 
+body {
+  font-family: 'Handlee', cursive;
+}
+
 ul {
   list-style-type: none;
 }
 
 h1 {
   color: blue;
+  font-family: 'Handlee', cursive;
 }
 
 .switch {
@@ -27,47 +32,9 @@ h1 {
   height: 0;
 }
 
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 16px;
-  width: 16px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
 #completedStatus {
   padding-left: 0px;
+  padding-right: 25px;
 }
 
 /* Rounded sliders */
@@ -92,7 +59,7 @@ input:checked + .slider:before {
 
 .goal-headers {
   padding-left: 40px;
-  margin: 0 0 20px 0;
+  margin: 15px 0 20px 0;
 }
 
 .goal-topper {
@@ -108,42 +75,34 @@ input:checked + .slider:before {
 }
 
 .completed-container {
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
-input[type="checkbox"] {
-  -webkit-appearance: none;
-  appearance: none;
+input[type=checkbox] {
+  width: 21px;
+  height: 21px;
+  border: 1px solid #ccc;
   background-color: #fff;
-  margin: 0;
-  font: inherit;
-  color: currentColor;
-  width: 25px;
-  height: 25px;
-  border: 0.15em solid currentColor;
-  border-radius: 0.15em;
-  transform: translateY(-0.075em);
-
-  display: grid;
-  place-content: center;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
-input[type="checkbox"]::before {
-  content: "";
-  width: 20px;
-  height: 20px;
-  transform: scale(0);
-  transition: 120ms transform ease-in-out;
-  box-shadow: inset 1em 1em var(--form-control-color);
-  transform-origin: bottom left;
-  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+input[type="checkbox"]:checked {
+  background-color: #464a4e;
+  border-color: #464a4e;
 }
 
-input[type="checkbox"]:checked::before {
-  transform: scale(1);
+.remove-goal {
+  margin-top: 25px;
+  background-color: transparent; /* Remove background color */
+  border: none; /* Remove borders */
+  color: #464a4e; /* Set text color */
+  cursor: pointer; /* Add cursor pointer on hover */
+  padding: 0; /* Remove padding */
 }
 
-input[type="checkbox"]:focus {
-  outline: max(2px, 0.15em) solid currentColor;
-  outline-offset: max(2px, 0.15em);
+
+.remove-goal:hover {
+  text-decoration: underline; /* Add underline on hover */
 }
+
