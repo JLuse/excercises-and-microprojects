@@ -14,7 +14,7 @@ Sentry.init({
   environment: 'dev',
   autoSessionTracking: true,
   attachStacktrace: true,
-  // debug: true,
+  debug: true,
   release: 'letsRelease@12345',
 
   replaysSessionSampleRate: 0.1,
@@ -29,18 +29,25 @@ Sentry.init({
       maskAllText: false,
       blockAllMedia: true,
     }),
+
+
+    new RewriteFramesIntegration({
+      root: '/stuff/otherStuff/MoreStuff',
+      prefix: 'user/',
+      // iteratee: (frame) => frame
+    })
   ],
 
-  beforeSend(event) {
-    const foundBreadCrumb = event.breadcrumbs.find(breadcrumb => {
-        if(breadcrumb.data !== undefined) {
-          if(breadcrumb.data.url === 'https://jsonplaceholder.typicode.com/todos/3') {
-            return true
-          }
-        }
-      })
-    return foundBreadCrumb ? null : event;
-  }
+  // beforeSend(event) {
+  //   const foundBreadCrumb = event.breadcrumbs.find(breadcrumb => {
+  //       if(breadcrumb.data !== undefined) {
+  //         if(breadcrumb.data.url === 'https://jsonplaceholder.typicode.com/todos/3') {
+  //           return true
+  //         }
+  //       }
+  //     })
+  //   return foundBreadCrumb ? null : event;
+  // }
       // console.log(foundBread)
 
     // })

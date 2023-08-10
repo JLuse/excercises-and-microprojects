@@ -1,21 +1,9 @@
-/* 
-Make the Todo list styled as a sheet of paper, like you would write out in real life. 
-Use Booptstrap
-Try and use text that looks like hand writing
-Delete and edit buttons remain invisble unless the todo is hovered over
-*/
-
 body {
   font-family: 'Handlee', cursive;
 }
 
 ul {
   list-style-type: none;
-}
-
-h1 {
-  color: blue;
-  font-family: 'Handlee', cursive;
 }
 
 .switch {
@@ -67,11 +55,13 @@ h1 {
 }
 
 .goals-container {
-  background-color: yellow;
+  background-color:#FADB6F;
+  border-radius: 0 0 10px 10px;
 }
 
 .goal-item {
   border-bottom-style: solid;
+  border-bottom-width: 1px;
 }
 
 .completed-container {
@@ -94,15 +84,20 @@ input[type="checkbox"]:checked {
 
 .remove-goal {
   margin-top: 25px;
-  background-color: transparent; /* Remove background color */
-  border: none; /* Remove borders */
-  color: #464a4e; /* Set text color */
-  cursor: pointer; /* Add cursor pointer on hover */
-  padding: 0; /* Remove padding */
+  background-color: transparent; 
+  border: none;
+  color: #464a4e; 
+  cursor: pointer; 
+  padding: 0; 
 }
 
 
 .remove-goal:hover {
-  text-decoration: underline; /* Add underline on hover */
+  text-decoration: underline;
+}
+
+#toggleCompleted {
+  font-weight: bold;
+  font-size: 16px;
 }
 
