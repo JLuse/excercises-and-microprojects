@@ -31,11 +31,11 @@ Sentry.init({
     }),
 
 
-    new RewriteFramesIntegration({
-      root: '/stuff/otherStuff/MoreStuff',
-      prefix: 'user/',
-      // iteratee: (frame) => frame
-    })
+    // new RewriteFramesIntegration({
+    //   root: '/stuff/otherStuff/MoreStuff',
+    //   prefix: 'user/',
+    //   // iteratee: (frame) => frame
+    // })
   ],
 
   // beforeSend(event) {
