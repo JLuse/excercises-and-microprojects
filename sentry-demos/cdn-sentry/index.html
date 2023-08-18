@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CDN Test</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Customer CDN TEST -->
+  <script src="https://browser.sentry-cdn.com/7.60.0/bundle.tracing.replay.min.js" crossorigin="anonymous"></script>
+  <script src="https://browser.sentry-cdn.com/7.60.0/captureconsole.min.js" crossorigin="anonymous"></script> 
+
+  <!-- Loder Script with CDN included -->
+  <!-- <script
+  src="https://js.sentry-cdn.com/8cb33339b438f2b499e0a6debb525e2f.min.js"
+  crossorigin="anonymous"
+></script> -->
+</head>
+<body>
+  <h1>CDN Setup</h1>
+  <button onclick="error()">Error</button>
+
+  <script>
+    Sentry.init({
+    dsn: 'https://8cb33339b438f2b499e0a6debb525e2f@o565143.ingest.sentry.io/4505721622691840',
+    release: '1',
+    environment: 'dev',
+    integrations: [
+    new Sentry.Integrations.CaptureConsole({levels: ['error']}),
+    new Sentry.BrowserTracing(),
+    new Sentry.Replay({
+    blockAllMedia: false,
+    maskAllText: false,
+    networkDetailAllowUrls: [window.location.origin],
+    })
+    ],
+    tracesSampleRate: 0.2,
+    replaysSessionSampleRate: 1,
+    replaysOnErrorSampleRate: 1,
+    });
+    </script>
+  <script src="script.js"></script>  
+</body>
+</html>
