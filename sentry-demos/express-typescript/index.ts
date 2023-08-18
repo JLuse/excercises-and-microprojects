@@ -15,6 +15,7 @@ Sentry.init({
     new Sentry.Integrations.Express({ app }),
     // Automatically instrument Node.js libraries and frameworks
     ...Sentry.autoDiscoverNodePerformanceMonitoringIntegrations(),
+    
   ],
 
   // Set tracesSampleRate to 1.0 to capture 100%
