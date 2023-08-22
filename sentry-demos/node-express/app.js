@@ -11,7 +11,11 @@ const app = express()
 const port = 3000;
 
 Sentry.init({
+  // trial org
   dsn: "https://521c418fa4094f419c7d6d5c57ccebf7@o982579.ingest.sentry.io/4505195219845120",
+  
+  // Sponsodered org
+  // dsn: "https://1b4e217ed303af8a67ee4089f6510b7f@o565143.ingest.sentry.io/4505745045454848",
   debug: true,
   // How to get profile envelope
   // transport: () => {
@@ -45,8 +49,6 @@ Sentry.init({
   // We recommend adjusting this value in production
   tracesSampleRate: 1.0,
   profilesSampleRate: 1.0,
-
-  debug: true,
   // beforeSend: (event) => {
   //   // if (event?.response?.status === '[0]') {
   //   // return null;
@@ -57,12 +59,12 @@ Sentry.init({
   // tracesSampler: samplingContext => {
   //   console.log(samplingContext.request.headers['user-agent'])
   //  }
-  tracesSampler: (samplingContext) => {
-    const headers = samplingContext?.request?.headers
-    const userAgent = headers ? headers['user-agent'] : null
-     if (userAgent && userAgent.indexOf('Mozilla') !== -1) {
-      console.log('Should be filtered')
-    }
+  // tracesSampler: (samplingContext) => {
+  //   const headers = samplingContext?.request?.headers
+  //   const userAgent = headers ? headers['user-agent'] : null
+  //    if (userAgent && userAgent.indexOf('Mozilla') !== -1) {
+  //     console.log('Should be filtered')
+  //   }
     // if (samplingContext.request) {
     // const headers = samplingContext?.request?.headers
     // const userAgent = headers ? headers['user-agent'] : null
@@ -71,7 +73,7 @@ Sentry.init({
     // // }
     // // }
     // // return app.get('sentry')['tracesSampleRate']
-    },
+    // },
 });
 
 // RequestHandler creates a separate execution context, so that all
@@ -88,6 +90,26 @@ app.all('/', (req, res) => {
 app.get("/debug-sentry", function mainHandler(req, res) {
   throw new Error("My first Sentry error!");
 });
+
+app.get('/transaction', (req, res) => {
+  const transaction = Sentry.startTransaction({ name: "new-transaction" });
+  const span = transaction.startChild({ op: "functionX" }); // This function returns a Span
+  // functionCallX
+  span.finish(); // Remember that only finished spans will be sent with the transaction
+  transaction.finish(); // Finishing the transaction will send it to Sentry
+})
+
+app.get('/custom-metric', (req, res) => {
+
+  const transaction = Sentry.getCurrentHub().getScope().getTransaction();
+  const span = transaction.startChild({ op: "custom" });
+
+  transaction.setMeasurement("custom.test_metric", 20.00, "second");
+  transaction.setMeasurement("custom.another_test_metric", 44.00, "second");
+
+  span.finish(); // Remember that only finished spans will be sent with the transaction
+  transaction.finish(); // Finishing the transaction will send it to Sentry
+})
 
 app.use(Sentry.Handlers.errorHandler());
 
