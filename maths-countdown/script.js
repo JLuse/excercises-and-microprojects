@@ -8,57 +8,44 @@ $(document).ready(function(){
   var score = 0;
   var interval;
 
-  var randomNumberGenerator = function (size) {
-    return Math.ceil(Math.random() * size);
-  }
+  // var randomNumberGenerator = function (size) {
+  //   return Math.ceil(Math.random() * size);
+  // }
 
   
   
   var questionGenerator = function () {
     var question = {};
-    var num1 = randomNumberGenerator(10);
-    var num2 = randomNumberGenerator(10);
+
+    var num1 = Math.floor(Math.random() * 9) + 2;
+    var num2 = Math.floor(Math.random() * (num1 - 1)) + 1;
     
     if (addButton.checked) {
       question.answer = num1 + num2;
       question.equation = String(num1) + " + " + String(num2);
-      // return question;
-      console.log(question)
     } else if (subButton.checked) {
       question.answer = num1 - num2;
       question.equation = String(num1) + " - " + String(num2);
-      // return question;
-      console.log(question)
     } else if (multiplyButton.checked) {
       question.answer = num1 * num2;
       question.equation = String(num1) + " * " + String(num2);
-      // return question;
-      console.log(question)
     } else if (divisionButton.checked) {
-      question.answer = num1 / num2;
+      question.answer = Math.floor(num1 / num2);
       question.equation = String(num1) + " / " + String(num2);
-      // return question;
-      console.log(question)
     }
-
-    // question.answer = num1 + num2;
-    // question.equation = String(num1) + " + " + String(num2);
     
     return question;
   }
 
-  var subtract = function() {
-    questionGenerator()
-  }
-  subButton.addEventListener('click', subtract)
-  
-  currentQuestion = questionGenerator();
-  $('#equation').text(currentQuestion.equation);
-
   var renderNewQuestion = function () {
     currentQuestion = questionGenerator();
-    $('#equation').text(currentQuestion.equation);  
+    $('#equation').text(currentQuestion.equation);
   }
+
+  addButton.addEventListener('click', renderNewQuestion);
+  subButton.addEventListener('click', renderNewQuestion);
+  multiplyButton.addEventListener('click', renderNewQuestion);
+  divisionButton.addEventListener('click', renderNewQuestion);
   
   var checkAnswer = function (userInput, answer) {
     if (userInput === answer) {
@@ -101,4 +88,4 @@ $(document).ready(function(){
   });
 
   renderNewQuestion();
-}); // end dom ready
+});
