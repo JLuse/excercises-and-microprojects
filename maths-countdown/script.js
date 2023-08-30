@@ -8,12 +8,6 @@ $(document).ready(function(){
   var score = 0;
   var interval;
 
-  // var randomNumberGenerator = function (size) {
-  //   return Math.ceil(Math.random() * size);
-  // }
-
-  
-  
   var questionGenerator = function () {
     var question = {};
 

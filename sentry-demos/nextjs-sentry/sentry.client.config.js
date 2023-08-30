@@ -38,16 +38,18 @@ Sentry.init({
     // })
   ],
 
-  // beforeSend(event) {
-  //   const foundBreadCrumb = event.breadcrumbs.find(breadcrumb => {
-  //       if(breadcrumb.data !== undefined) {
-  //         if(breadcrumb.data.url === 'https://jsonplaceholder.typicode.com/todos/3') {
-  //           return true
-  //         }
-  //       }
-  //     })
-  //   return foundBreadCrumb ? null : event;
-  // }
+  beforeSend(event) {
+    // const foundBreadCrumb = event.breadcrumbs.find(breadcrumb => {
+    //     if(breadcrumb.data !== undefined) {
+    //       if(breadcrumb.data.url === 'https://jsonplaceholder.typicode.com/todos/3') {
+    //         return true
+    //       }
+    //     }
+    //   })
+    // return foundBreadCrumb ? null : event;
+    console.log(event)
+    return event
+  }
       // console.log(foundBread)
 
     // })
