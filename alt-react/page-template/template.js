@@ -56,6 +56,14 @@ var Footer = function Footer() {
   );
 };
 
+// const Clock = (props) => {
+//   return (
+//     <div>
+//       <h1>The time is: {props.date.toLocaleDateString()}</h1>
+//     </div>
+//   )
+// }
+
 var Template = function Template(props) {
   return React.createElement(
     React.Fragment,

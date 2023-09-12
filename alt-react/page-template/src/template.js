@@ -34,10 +34,19 @@ const Footer = () => {
   )
 }
 
+// const Clock = (props) => {
+//   return (
+//     <div>
+//       <h1>The time is: {props.date.toLocaleDateString()}</h1>
+//     </div>
+//   )
+// }
+
 const Template = (props) => {
   return (
     <React.Fragment>
       <Navbar />
+      {/* <Clock date={new Date()}/> */}
       <div className="container py-4">
         <div className="row">
           <div className="col-12 col-md-9">
