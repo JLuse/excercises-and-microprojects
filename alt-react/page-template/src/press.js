@@ -1,7 +1,7 @@
 const App = () => {
   return (
     <Template>
-      <h1>Main content</h1>
+      <h1>Press page</h1>
     </Template>
   );
 }
