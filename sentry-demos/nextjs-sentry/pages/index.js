@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import * as Sentry from "@sentry/react";
 import { fetchData } from '../pages/api/api.js';
+import Link from 'next/link';
 
 function Home() {
 
@@ -92,6 +93,7 @@ function Home() {
             >
               Fetch
           </button>
+          <Link href="/page1">Go to Page 1</Link>
 
 
           {/* <div>

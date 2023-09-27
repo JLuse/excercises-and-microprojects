@@ -6,14 +6,14 @@
   <title>CDN Test</title>
   <link rel="stylesheet" href="styles.css">
   <!-- Customer CDN TEST -->
-  <!-- <script src="https://browser.sentry-cdn.com/7.60.0/bundle.tracing.replay.min.js" crossorigin="anonymous"></script>
-  <script src="https://browser.sentry-cdn.com/7.60.0/captureconsole.min.js" crossorigin="anonymous"></script>  -->
+  <script src="https://browser.sentry-cdn.com/7.60.0/bundle.tracing.replay.min.js" crossorigin="anonymous"></script>
+  <script src="https://browser.sentry-cdn.com/7.60.0/captureconsole.min.js" crossorigin="anonymous"></script> 
   <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self';"> -->
-  <script
+  <!-- <script
   src="https://browser.sentry-cdn.com/7.64.0/bundle.tracing.min.js"
   integrity="sha384-sXRXtf4iGK2XdQEaG7eOlZtJaVq+DKmnpe2Du8Bl4Di2LacdP7aR+VuLqk5ip9az"
   crossorigin="anonymous"
-></script>
+></script> -->
 
   <!-- Loder Script with CDN included -->
   <!-- <script
@@ -24,24 +24,35 @@
 <body>
   <h1>CDN Setup</h1>
   <button id="error">Error</button>
+  <button id="unhandle">Unhandle Error</button>
 
   <script>
     Sentry.init({
     dsn: 'https://8cb33339b438f2b499e0a6debb525e2f@o565143.ingest.sentry.io/4505721622691840',
     release: '1',
     environment: 'dev',
+    // integrations: function(integrations) {
+    //   // integrations will be all default integrations
+    //   return integrations.filter(function(integration) {
+    //     return integration.name !== "GlobalHandlers";
+    //   });
+    // },
     integrations: [
     // new Sentry.Integrations.CaptureConsole({levels: ['error']}),
     new Sentry.BrowserTracing(),
-    // new Sentry.Replay({
-    // blockAllMedia: false,
-    // maskAllText: false,
-    // networkDetailAllowUrls: [window.location.origin],
-    // })
-    ],
-    tracesSampleRate: 0.2,
-    replaysSessionSampleRate: 1,
-    replaysOnErrorSampleRate: 1,
+    new Sentry.Replay({
+      blockAllMedia: false,
+      maskAllText: false,
+      networkDetailAllowUrls: [window.location.origin],
+      })
+      ],
+      beforeSend(event) {
+        console.log(event)
+        return event;
+      },
+      tracesSampleRate: 0.2,
+      replaysSessionSampleRate: 1,
+      replaysOnErrorSampleRate: 1,
     });
     </script>
   <script src="script.js"></script>
