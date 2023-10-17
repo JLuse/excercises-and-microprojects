@@ -6,8 +6,11 @@
   <title>CDN Test</title>
   <link rel="stylesheet" href="styles.css">
   <!-- Customer CDN TEST -->
-  <script src="https://browser.sentry-cdn.com/7.60.0/bundle.tracing.replay.min.js" crossorigin="anonymous"></script>
-  <script src="https://browser.sentry-cdn.com/7.60.0/captureconsole.min.js" crossorigin="anonymous"></script> 
+  <script
+  src="https://browser.sentry-cdn.com/7.73.0/bundle.tracing.replay.debug.min.js"
+  integrity="sha384-7W5h8eXK1f17JZHx8Oh/dgMGnmGasyikq+QVKpxVZu+Yj74Kjmps89IKMbFStSYR"
+  crossorigin="anonymous"
+></script>
   <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self';"> -->
   <!-- <script
   src="https://browser.sentry-cdn.com/7.64.0/bundle.tracing.min.js"
@@ -31,6 +34,7 @@
     dsn: 'https://8cb33339b438f2b499e0a6debb525e2f@o565143.ingest.sentry.io/4505721622691840',
     release: '1',
     environment: 'dev',
+    debug: true,
     // integrations: function(integrations) {
     //   // integrations will be all default integrations
     //   return integrations.filter(function(integration) {

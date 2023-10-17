@@ -1,1 +1,0 @@
-# Making a simple profile app for Sentry testing

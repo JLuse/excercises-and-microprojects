@@ -1,6 +1,10 @@
 let error = document.getElementById('error')
 error.addEventListener('click', function() {
-   throw new Error('CDN ERROR1')
+   try {
+      throw new Error('CDN ERROR1')
+    } catch (e) {
+      Sentry.captureException(e);
+    }
 })
 
 let unhandledError = document.getElementById('unhandle')
