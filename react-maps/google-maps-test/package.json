@@ -1,5 +1,5 @@
 {
-  "name": "react-vite",
+  "name": "google-maps-test",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,9 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@sentry/browser": "^7.74.1",
-    "@sentry/react": "^7.74.0",
-    "@sentry/vite-plugin": "^2.8.0",
+    "@react-google-maps/api": "^2.19.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
