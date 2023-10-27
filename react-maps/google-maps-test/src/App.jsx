@@ -33,10 +33,7 @@ const App = () => {
               icon={"https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"}
             />
           ))} */}
-          <Marker 
-          position={
-          [{ lat: 37.78072608336038, lng: -122.4156909109696 },{lat: 37.79008800805286, lng: -122.3956900267082}]
-          } />
+          <Marker position={{ lat: 37.78072608336038, lng: -122.4156909109696 }} />
         </GoogleMap>
       )}
     </div>
