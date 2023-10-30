@@ -17,7 +17,7 @@ Sentry.init({
   debug: true,
   release: 'letsRelease@12345',
 
-  replaysSessionSampleRate: 0.1,
+  replaysSessionSampleRate: 0,
   replaysOnErrorSampleRate: 1.0,
 
   integrations: [
@@ -39,16 +39,10 @@ Sentry.init({
   ],
 
   beforeSend(event) {
-    // const foundBreadCrumb = event.breadcrumbs.find(breadcrumb => {
-    //     if(breadcrumb.data !== undefined) {
-    //       if(breadcrumb.data.url === 'https://jsonplaceholder.typicode.com/todos/3') {
-    //         return true
-    //       }
-    //     }
-    //   })
-    // return foundBreadCrumb ? null : event;
     console.log(event)
-    return event
+    // if (event) {
+    //   return null
+    // }
   }
       // console.log(foundBread)
 
