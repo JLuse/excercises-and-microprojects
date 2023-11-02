@@ -15,22 +15,25 @@ Sentry.init({
 });
 
 const server = http.createServer((req, res) => {
-  try {
-    if (req.url === '/') {
-      // Simulate an error by throwing an exception
-      console.log(Sentry.getCurrentHub().getScope()._sdkProcessingMetadata)
-      throw new Error('This is a deliberate error for testing.');
-    } else {
-      res.writeHead(200, { 'Content-Type': 'text/plain' });
-      res.end('Request was successful.');
+  // console.log(Sentry.getCurrentHub().getScope().setSDKProcessingMetadata({ req })) 
+
+    try {
+      if (req.url === '/') {
+        Sentry.getCurrentHub().getScope().setSDKProcessingMetadata({ req })
+        console.log(Sentry.getCurrentHub()._stack[0].client)
+        // Simulate an error by throwing an exception
+        throw new Error('This is a deliberate error for testing AgianAgainAgain.');
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('Request was successful.');
+      }
+    } catch (error) {
+      res.writeHead(500, { 'Content-Type': 'text/plain' });
+      Sentry.captureException(error);
+      res.end('An error occurred!!!.');
     }
-  } catch (error) {
-    res.writeHead(500, { 'Content-Type': 'text/plain' });
-    console.log(Sentry.getCurrentHub().getScope()._sdkProcessingMetadata)
-    Sentry.captureException(error);
-    res.end('An error occurred!!!.');
-  }
-});
+
+  });
 
 const PORT = 3000;
 server.listen(PORT, () => {
