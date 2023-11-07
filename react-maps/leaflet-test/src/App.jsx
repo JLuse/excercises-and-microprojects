@@ -9,7 +9,7 @@ import allRouteData from './all_muni_routes.json';
 
 function App() {
   const [selectedRoute, setSelectedRoute] = useState('')
-  const [jsonData, setJsonData] = useState(1);
+  const [jsonData, setJsonData] = useState(null);
 
   async function handleSelectedRoute (route) {
     setSelectedRoute(route)
@@ -26,7 +26,7 @@ function App() {
 
   useEffect(() => {
     // Reset jsonData when the selected value changes
-    // setJsonData(null);
+    setJsonData(null);
   }, [selectedRoute]);
 
 //  {allRouteData.routes.map(route => {
