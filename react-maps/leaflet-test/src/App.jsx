@@ -29,12 +29,6 @@ const handleDropdownChange = (value) => {
   setSelectedRoute(value);
 };
 
-
-//  {allRouteData.routes.map(route => {
-//   console.log(route.real_time_route_id + ' - ' + route.global_route_id)
-//  })
-// }
-  // const stops = routeData.itineraries[0].stops
   const stops = jsonData.itineraries[0].stops
 
   return (
