@@ -33,7 +33,7 @@
   }
 }
 
-.card {
+.excuse-container {
   padding: 2em;
 }
 
@@ -43,4 +43,6 @@
 
 .excuse {
   border: solid white;
+  width: 450px;
+  height: 200px;
 }
