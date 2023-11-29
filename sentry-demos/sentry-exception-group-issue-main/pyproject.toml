@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "sentry-exception-group-issue"
+version = "0.1.0"
+description = ""
+authors = ["Nick DeRobertis <whoopnip@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "*"
+sentry-sdk = {extras = ["fastapi"], version = "^1.36.0"}
+uvicorn = "^0.24.0.post1"
+anyio = "4.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
