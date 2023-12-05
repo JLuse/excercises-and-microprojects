@@ -193,7 +193,7 @@ class MyApp extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: const Text(
-                    'Oeschinen Lake Campground',
+                    'Oeschinen Lake fake',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
@@ -264,7 +264,15 @@ class MyApp extends StatelessWidget {
               ), 
               titleSection,
               buttonSection,
-              textSection
+              textSection,
+              ElevatedButton(
+                onPressed: () {
+                  // Intentionally throw an errorr
+                  Sentry.captureMessage('Something went wrong');
+                  // throw Exception('This is an intentional error');
+                },
+                child: Text('Throw Errors'),
+              ),
             ],
           ), 
       ),
