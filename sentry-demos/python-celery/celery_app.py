@@ -19,7 +19,7 @@ from sentry_sdk.integrations.celery import CeleryIntegration
 def init_sentry(**kwargs):
     sentry_sdk.init(
         dsn='https://52bb39f25a8a45ecda7380ebb7e7f3bf@o565143.ingest.sentry.io/4506391168155648',
-        integrations=[CeleryIntegration(monitor_beat_tasks=True)],  # 👈
+        integrations=[CeleryIntegration(monitor_beat_tasks=True)],  
         enable_tracing=True,
         environment="DEV",
         release="v21.21",
@@ -32,12 +32,13 @@ app = Celery('my_celery_app',
 app.conf.timezone = 'UTC'
 
 @app.task
+@sentry_sdk.monitor(monitor_slug='second-monitor')
 def my_scheduled_task():
-    print("Task executed!")
+    print("More tasks executed!!!")
 
 app.conf.beat_schedule = {
-    'run-me-every-minute': {
+    'second-monitor': {
         'task': 'celery_app.my_scheduled_task',
-        'schedule': crontab(),  # Executes every minute
+        'schedule': crontab(minute="*/1"),  # Executes every minute
     },
 }
