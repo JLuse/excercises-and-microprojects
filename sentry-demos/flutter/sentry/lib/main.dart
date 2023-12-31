@@ -164,8 +164,6 @@ Future<void> main() async {
   await SentryFlutter.init(
     (options) {
       options.dsn = 'https://fc342f3857eb4381679f0e90af2a94c6@o565143.ingest.sentry.io/4505761466089472';
-      // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
-      // We recommend adjusting this value in production.
       options.tracesSampleRate = 1.0;
       options.debug = true;
     },
