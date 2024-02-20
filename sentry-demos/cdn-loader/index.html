@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CDN Test</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Customer CDN TEST -->
+  <!-- <script
+  src="https://browser.sentry-cdn.com/7.101.0/bundle.min.js"
+  integrity="sha384-U86WfMr9yAcYxNcbAjhB/dXZrnN+Hv0No1G653Q3bBAajsYLg7+iuPwo4Cc0opuV"
+  crossorigin="anonymous"
+></script> -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self';"> -->
+  <!-- <script
+  src="https://browser.sentry-cdn.com/7.64.0/bundle.tracing.min.js"
+  integrity="sha384-sXRXtf4iGK2XdQEaG7eOlZtJaVq+DKmnpe2Du8Bl4Di2LacdP7aR+VuLqk5ip9az"
+  crossorigin="anonymous"
+></script> -->
+
+  <!-- Loder Script with CDN included -->
+  <script
+  src="https://js.sentry-cdn.com/8cb33339b438f2b499e0a6debb525e2f.min.js"
+  crossorigin="anonymous"
+></script>
+</head>
+<body>
+  <h1>CDN Setup</h1>
+  <button id="error">Error</button>
+  <button id="unhandle">Unhandle Error</button>
+
+    <script>
+      // Configure sentryOnLoad before adding the Loader Script
+      window.sentryOnLoad = function () {
+        Sentry.init({
+          dsn: 'https://8cb33339b438f2b499e0a6debb525e2f@o565143.ingest.sentry.io/4505721622691840',
+        release: '1',
+        environment: 'dev',
+        debug: true,
+        // integrations: function(integrations) {
+        //   // integrations will be all default integrations
+        //   return integrations.filter(function(integration) {
+        //     return integration.name !== "GlobalHandlers";
+        //   });
+        // },
+        integrations: [
+        // new Sentry.Integrations.CaptureConsole({levels: ['error']}),
+          Sentry.breadcrumbsIntegration({
+            fetch: false,
+            xhr: false
+          }),
+          ],
+          beforeSend(event) {
+            console.log(event)
+            return event;
+          },
+        });
+      };
+    </script>
+  
+
+  
+  <!-- <script>
+    Sentry.init({
+    dsn: 'https://8cb33339b438f2b499e0a6debb525e2f@o565143.ingest.sentry.io/4505721622691840',
+    release: '1',
+    environment: 'dev',
+    debug: true,
+    // integrations: function(integrations) {
+    //   // integrations will be all default integrations
+    //   return integrations.filter(function(integration) {
+    //     return integration.name !== "GlobalHandlers";
+    //   });
+    // },
+    integrations: [
+    // new Sentry.Integrations.CaptureConsole({levels: ['error']}),
+      Sentry.breadcrumbsIntegration({
+        fetch: false,
+        xhr: false
+      }),
+      ],
+      beforeSend(event) {
+        console.log(event)
+        return event;
+      },
+      // tracesSampleRate: 0.2,
+      // replaysSessionSampleRate: 1,
+      // replaysOnErrorSampleRate: 1,
+    });
+    </script> -->
+  <script src="script.js"></script>
+
+</body>
+</html>
