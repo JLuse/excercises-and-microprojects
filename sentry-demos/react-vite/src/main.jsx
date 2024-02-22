@@ -5,6 +5,7 @@ import * as Sentry from "@sentry/react";
 
 Sentry.init({
   dsn: "https://ed75f14a290220a518c62b0e331ead39@o565143.ingest.sentry.io/4506140661972992",
+  debug: true,
   integrations: [
     new Sentry.BrowserTracing({
       // Set 'tracePropagationTargets' to control for which URLs distributed tracing should be enabled

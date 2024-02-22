@@ -42,7 +42,36 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.get("/debug", (req: Request, res: Response) => {
-  throw new Error("My first Sentry error!");
+  Sentry.withScope((scope: Sentry.Scope) => {
+    console.log("New Connection Initiated");
+    
+    
+    // Set the Sentry scope so we know who caused issues
+    scope.setUser({ id: '2121' });
+    
+    // Add some more data to Sentry context
+    scope.setContext("helen", {
+    name: "Helen",
+    log_directory: 'stuff',
+    voice: 'voice',
+   protocol: 'proto',
+    mediaformat: 'media',
+    callerId: 'calle',
+    streamSid: 'strea',
+    });
+
+    scope.setExtras({
+    log_directory: 'logDi',
+    voice: 'voice',
+    protocol: 'proto',
+    mediaformat: 'media',
+    callerId: 'calle',
+    streamSid: 'strea',
+    });
+  });
+
+  Sentry.captureException(new Error("my other error not in local scope"));
+
 });
 
 // The error handler must be before any other error middleware and after all controllers
