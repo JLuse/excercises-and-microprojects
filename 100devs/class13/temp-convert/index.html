@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="description" content="This is where your description goes">
+    	<meta name="keywords" content="one, two, three">
+
+		<title>Converter for temps</title>
+
+		<!-- external CSS link -->
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+    <h1>Convert that Temp</h1>
+    <label for="tempF">Enter in a temp F:</label>
+    <input type="number" name="tempF" id="tempF" />
+
+    <label for="tempC">Enter in a temp C:</label>
+    <input type="number" name="tempC" id="tempC" />
+
+    <div class="btn-container">
+      <button type="button" id="f-to-c-btn">Convert to C</button>
+      <button type="button" id="c-to-f-btn">Convert to F</button>
+    </div>
+
+    <h1 id="converted-temp"></h1>
+		
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>
