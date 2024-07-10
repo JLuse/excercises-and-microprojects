@@ -9,6 +9,10 @@ import * as Sentry from "@sentry/react";
 Sentry.init({
   dsn: "https://16625a5ca855c377243bd21a2ebde128@o565143.ingest.sentry.io/4506180984045568",
   integrations: [
+    Sentry.feedbackIntegration({
+      // Additional SDK configuration goes in here, for example:
+      colorScheme: "system",
+    }),
     new Sentry.BrowserTracing({
       // Set 'tracePropagationTargets' to control for which URLs distributed tracing should be enabled
       tracePropagationTargets: ["localhost", /^https:\/\/yourserver\.io\/api/],
