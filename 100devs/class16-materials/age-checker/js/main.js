@@ -26,3 +26,10 @@ if (age < 16) {
 //On click of the h1
 //Take the value from the input
 //Place the result of the conditional in the paragraph
+let h1 = document.querySelector('h1')
+let input = document.querySelector('input').value
+
+function insert() {
+  document.querySelector('p').innerHTML = input
+}
+h1.addEventListener('click', insert)
