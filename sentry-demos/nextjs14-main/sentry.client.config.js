@@ -3,7 +3,7 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
 import * as Sentry from "@sentry/nextjs";
-
+console.log(process.env.SENTRY_ENV)
 Sentry.init({
   dsn: "https://29bef7f76c9ef691ca30828797bc5772@o982579.ingest.us.sentry.io/4507471779659776",
   integrations: [
@@ -29,6 +29,7 @@ Sentry.init({
       // Additional Replay configuration goes in here, for example:
       maskAllText: true,
       blockAllMedia: true,
+      environment: 'Test'
     }),
   ],
   profilesSampleRate: 1.0,

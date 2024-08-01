@@ -25,6 +25,7 @@ Sentry.init({
   replaysSessionSampleRate: 0.0, // This sets the sample rate at 10%. You may want to change it to 100% while in development and then sample at a lower rate in production.
   replaysOnErrorSampleRate: 1.0, // If you're not already sampling the entire session, change the sample rate to 100% when sampling sessions where errors occur.
   debug: true,
+  parentSpanIsAlwaysRootSpan: false,
   // beforeSend(event) {
   //   return event.user.email === "jay@example.com" ? null : event
   // }
@@ -36,3 +37,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   </React.StrictMode>,
 )
+
+// 35abd1deeb7149190aa9314e946d297a60e0fc8c3604875c48e17179a1084229
