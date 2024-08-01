@@ -56,6 +56,7 @@ const App = () => {
   const [ counter, setCounter ] = useState(0)
   const [left, setLeft] = useState(0)
   const [right, setRight] = useState(0)
+  const [allClicks, setAll] = useState([])
 
 
   const increaseByOne = () => setCounter(counter + 1)
