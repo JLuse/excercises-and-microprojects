@@ -3,12 +3,12 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
 import * as Sentry from "@sentry/nextjs";
-console.log(process.env.SENTRY_ENV)
+console.log(process.env.NEXT_PUBLIC_SENTRY_ENV)
 Sentry.init({
   dsn: "https://29bef7f76c9ef691ca30828797bc5772@o982579.ingest.us.sentry.io/4507471779659776",
   integrations: [
     // Add browser profiling integration to the list of integrations
-    new Sentry.browserProfilingIntegration(),
+    // new Sentry.browserProfilingIntegration(),
   ],
 
   // Adjust this value in production, or use tracesSampler for greater control
