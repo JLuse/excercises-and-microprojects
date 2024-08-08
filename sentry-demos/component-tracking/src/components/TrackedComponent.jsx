@@ -9,7 +9,7 @@ function TrackedComponent() {
   useEffect(() => {
     // Start a new span for the render
     const span = Sentry.startSpan({ name: 'TrackedComponent Render'}, () => {
-      return console.log('Testing Span')
+      return console.log('Testing Span in component ')
     });
 
     return () => {
