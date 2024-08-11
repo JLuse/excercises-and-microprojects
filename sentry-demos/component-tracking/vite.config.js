@@ -7,6 +7,9 @@ export default defineConfig({
   plugins: [react(), sentryVitePlugin({
     org: "jluse-free-org",
     project: "component-tracking"
+  }), sentryVitePlugin({
+    org: "jluse-free-org",
+    project: "component-tracking"
   })],
 
   build: {

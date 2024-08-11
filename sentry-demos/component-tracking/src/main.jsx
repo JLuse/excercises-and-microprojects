@@ -19,8 +19,6 @@ Sentry.init({
   replaysOnErrorSampleRate: 1.0, // If you're not already sampling the entire session, change the sample rate to 100% when sampling sessions where errors occur.
   debug: true,
   beforeSendSpan(span) {
-    // Modify or drop the span here
-    // console.log('BEFORE SPAN -- ', span.description)
     if (span.description === '<CustomAppName>') {
       console.log('BEFORE SPAN -- ', span)
       Sentry.metrics.set("customComponentMetric", "TEST from beforeSendSpan");
