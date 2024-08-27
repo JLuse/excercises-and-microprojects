@@ -17,6 +17,7 @@ const Content = (props) => {
       </p>
       <p>
         {props.parts[2].name} {props.parts[2].exercises}
+        
       </p>
     </>
   )
