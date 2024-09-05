@@ -26,4 +26,5 @@ export const getCLI = (): SentryCliReleases => {
     }
   }
   return cli;
+  
 };
